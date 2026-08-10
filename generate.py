@@ -29,17 +29,22 @@ def ensure_dirs():
     (OUTPUT_DIR / "about").mkdir(exist_ok=True)
     (OUTPUT_DIR / "search").mkdir(exist_ok=True)
     (OUTPUT_DIR / "data").mkdir(exist_ok=True)
+    (OUTPUT_DIR / "assets").mkdir(exist_ok=True)
 
 
 def copy_assets():
     src_css = ROOT / "css"
     src_js = ROOT / "js"
+    src_assets = ROOT / "assets"
     dst_css = OUTPUT_DIR / "css"
     dst_js = OUTPUT_DIR / "js"
+    dst_assets = OUTPUT_DIR / "assets"
     if src_css.exists():
         shutil.copytree(src_css, dst_css, dirs_exist_ok=True)
     if src_js.exists():
         shutil.copytree(src_js, dst_js, dirs_exist_ok=True)
+    if src_assets.exists():
+        shutil.copytree(src_assets, dst_assets, dirs_exist_ok=True)
 
 
 def nav_link(label, href, active_href, english="", status=""):
@@ -80,7 +85,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
     <header class="navbar">
       <div class="container navbar-inner">
         <a href="/" class="navbar-logo">
-          <span class="navbar-logo-mark">IF</span>
+          <img src="/assets/logo.jpg" alt="I.F. Labs" class="navbar-logo-img">
           <span>{site['name']}</span>
         </a>
         <nav class="navbar-links" aria-label="主导航">
@@ -108,7 +113,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
       <div class="container footer-grid">
         <div class="footer-brand">
           <div class="navbar-logo mb-2">
-            <span class="navbar-logo-mark">IF</span>
+            <img src="/assets/logo.jpg" alt="I.F. Labs" class="navbar-logo-img">
             <span>{site['name']}</span>
           </div>
           <p class="text-small">{site['tagline']}</p>
