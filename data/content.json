@@ -1,0 +1,547 @@
+{
+  "site": {
+    "name": "I.F. Labs",
+    "tagline": "有结论的 AI 效率实验室",
+    "description": "I.F. Labs 是一个以真实测试、明确结论和可复用工作流为核心的 AI 工具决策与生产力实验室。",
+    "url": "https://iflabs.ai",
+    "author": "I.F. Labs",
+    "lang": "zh-CN"
+  },
+  "navigation": [
+    { "label": "评测", "href": "/reviews", "english": "Reviews" },
+    { "label": "方案", "href": "/guides", "english": "Guides" },
+    { "label": "AI 速用包", "href": "/packages", "english": "Packages" },
+    { "label": "工具库", "href": "/library", "english": "Library", "status": "BETA" },
+    { "label": "对比", "href": "/compare", "english": "Compare", "status": "BETA" },
+    { "label": "关于", "href": "/about", "english": "About" }
+  ],
+  "categories": {
+    "review": ["聊天模型", "搜索研究", "写作", "图像", "视频", "自动化", "知识管理", "开发"],
+    "guide": ["研究与学习", "写作与表达", "汇报与分析", "内容创作", "自动化与协作", "个人知识管理"]
+  },
+  "tags": [
+    { "name": "claude", "label": "Claude" },
+    { "name": "chatgpt", "label": "ChatGPT" },
+    { "name": "perplexity", "label": "Perplexity" },
+    { "name": "notion", "label": "Notion" },
+    { "name": "midjourney", "label": "Midjourney" },
+    { "name": "long-form-writing", "label": "长文写作" },
+    { "name": "research", "label": "研究" },
+    { "name": "productivity", "label": "效率" }
+  ],
+  "reviews": [
+    {
+      "id": "claude-sonnet-review",
+      "title": "Claude Sonnet 4 中文长文改写：稳定，但不应替代事实核验",
+      "summary": "Claude Sonnet 在中文长文改写和结构化输出上表现稳定，表达自然，但在高频事实核验任务中偶有遗漏，需要人工复核。",
+      "tool": "Claude",
+      "toolSlug": "claude",
+      "version": "Sonnet 4",
+      "category": "聊天模型",
+      "overallScore": 8.4,
+      "recommendation": "recommend",
+      "suitableFor": ["需要处理长文本、提炼结构、进行改写的内容工作者", "有复核流程的研究和运营人员", "希望获得自然、连贯中文表达的用户"],
+      "notSuitableFor": ["需要强事实准确性且无法人工核验的任务", "只偶尔使用、且预算敏感的轻度用户", "需要实时联网检索最新信息的场景"],
+      "testedAt": "2026-08-01",
+      "updatedAt": "2026-08-06",
+      "readTime": "8 分钟",
+      "tags": ["claude", "long-form-writing", "中文"],
+      "scenarios": ["写作与表达", "研究与学习", "汇报与分析"],
+      "featured": true,
+      "scores": [
+        { "dimension": "输出质量", "weight": 30, "score": 8.8, "note": "长文结构稳定，表达自然，中文语感优于多数同类模型" },
+        { "dimension": "可靠性", "weight": 25, "score": 7.6, "note": "复杂任务偶有遗漏，事实性内容需人工复核" },
+        { "dimension": "易用性", "weight": 15, "score": 8.5, "note": "上手门槛低，Artifacts 模式便于查看长输出" },
+        { "dimension": "效率", "weight": 15, "score": 8.2, "note": "响应速度适中，长文本处理稳定" },
+        { "dimension": "性价比", "weight": 15, "score": 8.0, "note": "重度使用者价值更明显" }
+      ],
+      "sections": [
+        { "heading": "测试背景", "body": "本次测试围绕中文长文改写、结构化输出和事实核验三类任务展开。测试文本包括 3000–8000 字的报告、访谈稿和行业分析，重点观察模型在保持原意、优化表达、生成可执行结构方面的表现。" },
+        { "heading": "输出质量", "body": "Claude Sonnet 4 的中文语感明显优于前代和多数竞品。改写后的段落逻辑连贯，语气自然，较少出现“翻译腔”。在需要将口语化访谈整理成正式文档时，它能自动补充小标题、归纳核心观点，并保持段落之间的衔接。" },
+        { "heading": "可靠性", "body": "在简单改写任务中，Claude 很少出错；但在涉及数据、人名、时间线的复杂文本中，偶尔会出现张冠李戴或遗漏关键限定词的情况。因此，所有事实性内容建议人工复核，尤其是用于正式发布前的最后一道工序。" },
+        { "heading": "易用性与效率", "body": "Artifacts 模式让长输出不再挤在对话气泡里，阅读和复制都更方便。响应速度中等，处理 5000 字文本通常在 20–40 秒内完成，对日常使用足够。" },
+        { "heading": "最终结论", "body": "如果你是内容工作者、研究员或运营，需要频繁处理中文长文本并产出结构化内容，Claude Sonnet 4 是值得优先尝试的工具。但请把它当作“高级草稿助手”，而不是事实核查的终点。" }
+      ]
+    },
+    {
+      "id": "chatgpt-gpt5-review",
+      "title": "ChatGPT GPT-5：生态最强，但中文长文改写不如 Claude",
+      "summary": "ChatGPT GPT-5 在工具生态、插件能力和实时信息上领先，但在中文长文改写和自然度上略逊于 Claude，适合需要集成多工具的工作流。",
+      "tool": "ChatGPT",
+      "toolSlug": "chatgpt",
+      "version": "GPT-5",
+      "category": "聊天模型",
+      "overallScore": 8.2,
+      "recommendation": "recommend",
+      "suitableFor": ["需要插件、代码解释器、图像生成等综合能力的人", "已经深度使用 OpenAI 生态的团队", "需要实时联网搜索最新信息的场景"],
+      "notSuitableFor": ["只追求中文长文自然度的写作者", "对数据隐私要求极高且不能出境的场景", "预算有限且需求单一的轻度用户"],
+      "testedAt": "2026-08-02",
+      "updatedAt": "2026-08-06",
+      "readTime": "7 分钟",
+      "tags": ["chatgpt", "research", "productivity"],
+      "scenarios": ["研究与学习", "内容创作", "自动化与协作"],
+      "featured": false,
+      "scores": [
+        { "dimension": "输出质量", "weight": 30, "score": 8.0, "note": "综合能力强，中文自然度略低于 Claude" },
+        { "dimension": "可靠性", "weight": 25, "score": 8.0, "note": "联网搜索提升了事实性，但仍需复核" },
+        { "dimension": "易用性", "weight": 15, "score": 8.8, "note": "界面成熟，生态丰富" },
+        { "dimension": "效率", "weight": 15, "score": 8.5, "note": "响应快，多模态交互便利" },
+        { "dimension": "性价比", "weight": 15, "score": 7.5, "note": "Plus 订阅对综合需求划算，单一需求偏贵" }
+      ],
+      "sections": [
+        { "heading": "测试背景", "body": "测试覆盖日常研究查询、行业趋势追踪、竞品信息收集和代码问题排查四类场景。重点比较 ChatGPT GPT-5 在联网搜索、插件调用、多模态输入和中文长文改写上的表现。" },
+        { "heading": "输出质量", "body": "GPT-5 的综合能力非常全面。在需要结合图表、代码、网页内容回答复杂问题时，它能给出结构清晰的长回复。但纯中文长文改写的自然度略逊于 Claude，偶尔会有英文逻辑直译的痕迹。" },
+        { "heading": "生态与集成", "body": "ChatGPT 的插件、代码解释器、文件上传和团队工作空间让它更像一个 AI 工作台。如果你已经在使用 OpenAI 的 API 或其他产品，迁移成本和协同收益都很明显。" },
+        { "heading": "可靠性", "body": "联网搜索功能显著提升了时效性，但搜索结果同样可能引用质量不高的网页。建议把 ChatGPT 当作研究的起点而非终点，关键结论仍需交叉验证。" },
+        { "heading": "最终结论", "body": "适合需要一站式的综合 AI 平台、重视实时信息和多工具集成的用户。如果你的核心需求是中文长文改写，建议优先考虑 Claude。" }
+      ]
+    },
+    {
+      "id": "perplexity-search-review",
+      "title": "Perplexity：研究型搜索的当前最优解，但不适合创意写作",
+      "summary": "Perplexity 在信息检索、来源引用和研究效率上表现出色，是替代传统搜索引擎的有力工具，但在创意写作和开放式 brainstorm 上能力有限。",
+      "tool": "Perplexity",
+      "toolSlug": "perplexity",
+      "version": "Pro",
+      "category": "搜索研究",
+      "overallScore": 8.6,
+      "recommendation": "recommend",
+      "suitableFor": ["需要快速获取带来源的研究结论的人", "学生和研究人员", "需要追踪最新行业动态的从业者"],
+      "notSuitableFor": ["需要创意写作或品牌文案的人", "需要深度多轮头脑风暴的场景", "只愿意使用免费版的重度用户"],
+      "testedAt": "2026-08-03",
+      "updatedAt": "2026-08-06",
+      "readTime": "6 分钟",
+      "tags": ["perplexity", "research"],
+      "scenarios": ["研究与学习", "汇报与分析"],
+      "featured": false,
+      "scores": [
+        { "dimension": "输出质量", "weight": 30, "score": 8.5, "note": "回答结构化，来源清晰" },
+        { "dimension": "可靠性", "weight": 25, "score": 8.4, "note": "引用可溯源，但来源质量需判断" },
+        { "dimension": "易用性", "weight": 15, "score": 9.0, "note": "搜索体验自然" },
+        { "dimension": "效率", "weight": 15, "score": 9.0, "note": "检索速度快" },
+        { "dimension": "性价比", "weight": 15, "score": 7.8, "note": "Pro 对高频研究用户值得" }
+      ],
+      "sections": [
+        { "heading": "测试背景", "body": "测试场景包括快速了解一个陌生行业、准备文献综述、追踪科技新闻和验证一个具体数据。核心关注点是：Perplexity 能否替代传统搜索引擎，并在多大程度上减少反复打开网页的时间。" },
+        { "heading": "输出质量", "body": "Perplexity 的回答结构清晰，通常先给结论，再列要点，最后附上来源。对于需要快速掌握一个主题的学习者和研究者，这种格式非常高效。" },
+        { "heading": "来源与可靠性", "body": "每条关键结论都会标注来源链接，方便回溯。但来源质量并不总是可靠，低质量博客、论坛帖子或过时文章也可能被引用。建议用户主动筛选高权重来源。" },
+        { "heading": "创意写作短板", "body": "Perplexity 不适合写品牌文案、故事或多轮头脑风暴。它的优势是“把已有信息讲清楚”，而不是“创造新东西”。" },
+        { "heading": "最终结论", "body": "如果你每天都需要查资料、写研究摘要或跟进动态，Perplexity Pro 能显著节省时间。把它当作研究助理，而不是创意搭档。" }
+      ]
+    },
+    {
+      "id": "notion-ai-review",
+      "title": "Notion AI：知识库场景效率提升明显，但离开 Notion 无意义",
+      "summary": "Notion AI 在已有 Notion 工作流的团队中能显著提升文档整理、摘要和初稿生成效率，但单独作为 AI 工具竞争力不足。",
+      "tool": "Notion AI",
+      "toolSlug": "notion-ai",
+      "version": "2026.07",
+      "category": "知识管理",
+      "overallScore": 7.6,
+      "recommendation": "conditional",
+      "suitableFor": ["已深度使用 Notion 的团队", "需要快速整理会议纪要和文档的人", "在数据库和页面之间频繁切换的内容运营"],
+      "notSuitableFor": ["不使用 Notion 的用户", "需要强事实核验的写作", "预算敏感且已有其他 AI 订阅的人"],
+      "testedAt": "2026-08-04",
+      "updatedAt": "2026-08-06",
+      "readTime": "6 分钟",
+      "tags": ["notion", "productivity"],
+      "scenarios": ["个人知识管理", "团队协作", "汇报与分析"],
+      "featured": false,
+      "scores": [
+        { "dimension": "输出质量", "weight": 30, "score": 7.5, "note": "适合摘要和初稿，深度改写一般" },
+        { "dimension": "可靠性", "weight": 25, "score": 7.2, "note": "事实性错误与其他模型相当" },
+        { "dimension": "易用性", "weight": 15, "score": 9.2, "note": "在 Notion 内无缝使用" },
+        { "dimension": "效率", "weight": 15, "score": 8.5, "note": "无需切换工具" },
+        { "dimension": "性价比", "weight": 15, "score": 7.0, "note": "对非 Notion 用户无价值" }
+      ],
+      "sections": [
+        { "heading": "测试背景", "body": "测试在已有 Notion 工作流的环境中进行，覆盖会议纪要整理、数据库页面摘要、文档初稿生成和已有内容改写四个高频场景。" },
+        { "heading": "场景化优势", "body": "Notion AI 最大的亮点是“无需切换工具”。你可以直接在页面里选中文字调用 AI，生成的摘要或改写结果自动替换原文，数据库字段也能批量处理。" },
+        { "heading": "输出质量", "body": "摘要和初稿生成表现稳定，改写和扩写能力中等偏上。但与 Claude、ChatGPT 相比，深度改写和复杂推理任务还有差距。" },
+        { "heading": "定价与价值", "body": "Notion AI 的价格对已经订阅 Notion 的团队来说合理；但如果你不用 Notion，单独为它付费几乎没有意义。它本质上是 Notion 的增强功能，而不是独立 AI 工具。" },
+        { "heading": "最终结论", "body": "已深度使用 Notion 的团队可以直接开启，提升文档处理效率。否则建议先评估自己是否真的需要 Notion 作为知识库中心。" }
+      ]
+    },
+    {
+      "id": "midjourney-v7-review",
+      "title": "Midjourney V7：审美天花板仍在，但可控性仍是短板",
+      "summary": "Midjourney V7 在图像审美和风格一致性上保持领先，适合视觉探索和创意海报，但在精确可控性和产品设计中仍有局限。",
+      "tool": "Midjourney",
+      "toolSlug": "midjourney",
+      "version": "V7",
+      "category": "图像",
+      "overallScore": 8.0,
+      "recommendation": "recommend",
+      "suitableFor": ["需要高质量概念图和风格探索的设计师", "内容创作者和社交媒体运营", "愿意为审美质量付费的团队"],
+      "notSuitableFor": ["需要精确控制元素位置的品牌设计", "生成带准确文字的图片", "预算极低且需要大量出图的用户"],
+      "testedAt": "2026-08-05",
+      "updatedAt": "2026-08-06",
+      "readTime": "6 分钟",
+      "tags": ["midjourney", "productivity"],
+      "scenarios": ["内容创作", "设计"],
+      "featured": false,
+      "scores": [
+        { "dimension": "输出质量", "weight": 35, "score": 9.2, "note": "审美和细节仍处于第一梯队" },
+        { "dimension": "可控性", "weight": 25, "score": 6.8, "note": "精确控制困难，文字错误率高" },
+        { "dimension": "易用性", "weight": 15, "score": 7.5, "note": "Discord 流程有学习成本" },
+        { "dimension": "效率", "weight": 10, "score": 7.5, "note": "生成速度中等" },
+        { "dimension": "性价比", "weight": 15, "score": 7.0, "note": "对高质量需求值得，否则偏贵" }
+      ],
+      "sections": [
+        { "heading": "测试背景", "body": "测试覆盖概念海报、角色设定、风格探索和带文字图像四类任务。重点评估 V7 在审美一致性、细节表现、可控性和生成速度上的变化。" },
+        { "heading": "审美与质量", "body": "Midjourney V7 仍然是目前审美天花板最高的 AI 图像工具之一。光影、材质、构图和色彩的表现都保持了高水准，尤其适合需要“第一眼好看”的视觉探索。" },
+        { "heading": "可控性短板", "body": "精确控制元素位置、数量和文字内容仍然困难。品牌设计、产品说明图等需要精准还原的场景，需要配合 Photoshop 等工具后期处理。" },
+        { "heading": "学习成本", "body": "通过 Discord 或网页版操作对新用户有一定门槛。提示词工程和参数调整需要反复尝试，但一旦掌握，产出效率会大幅提升。" },
+        { "heading": "最终结论", "body": "适合设计师、内容创作者和愿意为美学习付费的团队。如果你需要的是精确、可控的商业设计稿，建议将它作为灵感源而非终稿工具。" }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "id": "ai-meeting-notes-workflow",
+      "title": "用 Claude 和 Notion，把一小时访谈录音整理成可执行周报",
+      "summary": "通过 Claude 转写和结构化访谈内容，再用 Notion 整理成包含结论、待办、负责人和风险项的周报。",
+      "result": "一份包含结论、待办、负责人和风险项的周报",
+      "roles": ["运营", "产品", "项目经理"],
+      "scenarios": ["汇报与分析", "团队协作"],
+      "tools": ["Claude", "Notion"],
+      "level": "beginner",
+      "estimatedMinutes": 25,
+      "steps": 5,
+      "outputs": ["访谈转写文本", "结构化摘要", "可执行周报模板"],
+      "publishedAt": "2026-08-05",
+      "updatedAt": "2026-08-06",
+      "readTime": "12 分钟",
+      "tags": ["claude", "notion", "productivity"],
+      "featured": true,
+      "sections": [
+        { "heading": "准备", "body": "确保你有一段完整的访谈录音或已转写的文本，以及一个用于整理周报的 Notion 页面。建议提前准备好周报模板，包含“本周结论”“待办事项”“负责人”“风险与阻塞”四个区块。" },
+        { "heading": "转写录音", "body": "将录音上传至 Claude 或使用转写工具得到文字稿。如果录音质量较差，先用降噪或转写工具处理，再把文本交给 Claude。" },
+        { "heading": "提取结构化摘要", "body": "给 Claude 一段提示词，要求它从访谈中提炼：关键结论、行动项、负责人、截止日期、风险点。使用 Artifacts 模式查看输出，便于复制。" },
+        { "heading": "填入 Notion 周报", "body": "将 Claude 输出的内容粘贴到 Notion 周报模板的对应区块。对于行动项，建议转换成 Notion 待办或数据库条目，方便后续追踪。" },
+        { "heading": "人工复核", "body": "检查事实、日期、人名和数字是否准确。Claude 偶尔会“合理推测”信息，这一步不能省略。" },
+        { "heading": "发布与同步", "body": "将周报链接分享到团队频道或邮件列表。如果团队使用 Notion，可以直接 @ 相关负责人，或在评论中分配任务。" }
+      ]
+    },
+    {
+      "id": "ai-literature-reading-student",
+      "title": "大学生 AI 文献阅读工作流：从泛读到笔记的 30 分钟流程",
+      "summary": "用 Perplexity 快速建立领域认知，用 Claude 拆解论文结构，用 Notion 建立可检索的文献笔记库。",
+      "result": "一套可复用的文献阅读笔记系统",
+      "roles": ["学生", "研究人员"],
+      "scenarios": ["研究与学习"],
+      "tools": ["Perplexity", "Claude", "Notion"],
+      "level": "beginner",
+      "estimatedMinutes": 30,
+      "steps": 4,
+      "outputs": ["文献摘要卡片", "概念关系图", "笔记模板"],
+      "publishedAt": "2026-08-04",
+      "updatedAt": "2026-08-06",
+      "readTime": "10 分钟",
+      "tags": ["perplexity", "claude", "research"],
+      "featured": false,
+      "sections": [
+        { "heading": "准备", "body": "确定本周要读的 3–5 篇核心文献，并准备好一个 Notion 文献笔记模板。模板至少应包含：标题、作者、研究问题、方法、主要发现、与你研究的关系、待追问问题。" },
+        { "heading": "用 Perplexity 建立领域地图", "body": "在正式读论文前，先用 Perplexity 搜索该领域的关键概念、主要学派和最新进展。这能帮你带着问题去读，而不是被术语淹没。" },
+        { "heading": "用 Claude 拆解论文结构", "body": "将论文摘要和结论输入 Claude，要求它用中文总结：研究问题、方法、主要发现、局限。对方法论部分有疑问时，可以进一步追问。" },
+        { "heading": "制作文献摘要卡片", "body": "在 Notion 中为每篇文献创建一张卡片，填入 Claude 的总结和你自己的批注。用标签或数据库字段管理主题、方法、重要程度。" },
+        { "heading": "建立概念关系图", "body": "阅读多篇文章后，用 Notion 的数据库视图或白板工具梳理概念之间的关系。找出反复出现的理论、对立观点和尚未回答的问题。" }
+      ]
+    },
+    {
+      "id": "ai-weekly-report-workflow",
+      "title": "AI 周报自动化：从数据到汇报的 15 分钟流程",
+      "summary": "用 ChatGPT 分析本周数据、生成关键洞察，再输出为可直接发送的周报格式。",
+      "result": "一份可直接发送的周报文档",
+      "roles": ["运营", "管理者", "销售"],
+      "scenarios": ["汇报与分析"],
+      "tools": ["ChatGPT"],
+      "level": "beginner",
+      "estimatedMinutes": 15,
+      "steps": 3,
+      "outputs": ["周报模板", "提示词", "数据检查清单"],
+      "publishedAt": "2026-08-03",
+      "updatedAt": "2026-08-06",
+      "readTime": "8 分钟",
+      "tags": ["chatgpt", "productivity"],
+      "featured": false,
+      "sections": [
+        { "heading": "准备", "body": "整理本周需要汇报的核心数据：关键指标变化、项目进展、遇到的问题和下周计划。建议用表格或 bullet 形式输入，避免让 AI 从长文档中自行提取。" },
+        { "heading": "数据检查", "body": "在交给 ChatGPT 前，先确认数据的准确性和口径。AI 会基于你提供的数字生成结论，错误输入会导致错误输出。" },
+        { "heading": "生成关键洞察", "body": "将数据粘贴到 ChatGPT，要求它提炼 3–5 条关键洞察，并解释指标变化背后的可能原因。可以指定输出风格：简洁、正式、或带行动建议。" },
+        { "heading": "输出周报格式", "body": "让 ChatGPT 将洞察整理成你团队惯用的周报模板，包含标题、数据概览、本周亮点、风险与阻塞、下周计划。要求使用 Markdown 或表格，方便复制到邮件或文档。" }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "claude",
+      "name": "Claude",
+      "vendor": "Anthropic",
+      "shortDescription": "以长文本理解和自然中文表达见长的对话式 AI 助手。",
+      "officialUrl": "https://claude.ai",
+      "categories": ["聊天模型"],
+      "useCases": ["长文改写", "结构化输出", "研究辅助"],
+      "platforms": ["Web", "iOS", "Android", "API"],
+      "pricingModel": "subscription",
+      "pricingSummary": "免费版有限额度；Pro $20/月",
+      "languages": ["中文", "英文", "多语言"],
+      "regionAvailability": "全球多数地区",
+      "status": "active",
+      "lastVerifiedAt": "2026-08-06"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "vendor": "OpenAI",
+      "shortDescription": "综合能力最强的 AI 工作平台，支持插件、联网、多模态和团队协作。",
+      "officialUrl": "https://chatgpt.com",
+      "categories": ["聊天模型"],
+      "useCases": ["综合问答", "代码", "研究", "内容创作"],
+      "platforms": ["Web", "iOS", "Android", "macOS", "Windows", "API"],
+      "pricingModel": "subscription",
+      "pricingSummary": "免费版；Plus $20/月；Team $25/人/月",
+      "languages": ["中文", "英文", "多语言"],
+      "regionAvailability": "全球多数地区",
+      "status": "active",
+      "lastVerifiedAt": "2026-08-06"
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "vendor": "Perplexity AI",
+      "shortDescription": "带来源引用的 AI 搜索研究工具。",
+      "officialUrl": "https://perplexity.ai",
+      "categories": ["搜索研究"],
+      "useCases": ["研究查询", "来源追踪", "行业动态"],
+      "platforms": ["Web", "iOS", "Android"],
+      "pricingModel": "freemium",
+      "pricingSummary": "免费版；Pro $20/月",
+      "languages": ["中文", "英文"],
+      "regionAvailability": "全球多数地区",
+      "status": "active",
+      "lastVerifiedAt": "2026-08-06"
+    }
+  ],
+  "packages": [
+    {
+      "id": "pkg-meeting-to-weekly",
+      "pkgNumber": "PKG 01",
+      "title": "会议纪要转周报",
+      "problem": "会议或访谈结束后，整理纪要耗时且容易遗漏行动项",
+      "goal": "30 分钟内把录音或速记变成可直接发送的结构化周报",
+      "costLevel": "low",
+      "costLabel": "低付费",
+      "estimatedMinutes": 30,
+      "audience": ["运营", "产品", "项目经理"],
+      "scenarios": ["汇报与分析", "团队协作"],
+      "tools": ["Claude", "Notion"],
+      "tags": ["会议", "周报", "Claude", "Notion"],
+      "riskHint": "事实、日期、人名必须人工复核",
+      "sections": [
+        { "heading": "适用场景与目标产出", "body": "适用于周会、客户访谈、项目复盘等场景。目标产出是一份包含结论、待办、负责人和风险项的周报。" },
+        { "heading": "工具组合选型", "body": "高性价比：Claude 免费版 + Notion 免费版，适合个人和小团队。顶配：Claude Pro + Notion Plus，适合高频使用、需要数据库视图和团队协作的场景。" },
+        { "heading": "可复制提示词", "body": "你是一位会议纪要整理专家。请从以下访谈文本中提取：1）关键结论（3–5 条）；2）行动项（含负责人、截止日期）；3）风险或阻塞；4）下周重点。用中文输出，使用 Markdown 列表。" },
+        { "heading": "完整工作流", "body": "1. 转写录音得到文字稿；2. 用 Claude 提取结构化摘要；3. 将结果填入 Notion 周报模板；4. 人工复核事实与数字；5. 分享链接并 @ 相关负责人。" },
+        { "heading": "常见坑点与避雷", "body": "不要把 AI 输出直接转发。Claude 偶尔会“合理推测”未明确提及的日期或负责人。所有行动项必须回查原始录音或纪要确认。" }
+      ]
+    },
+    {
+      "id": "pkg-competitor-analysis",
+      "pkgNumber": "PKG 02",
+      "title": "竞品分析速用包",
+      "problem": "做竞品分析时信息零散、来源不可靠、整理耗时",
+      "goal": "1 小时内完成一份带来源、有结论的竞品对比文档",
+      "costLevel": "low",
+      "costLabel": "低付费",
+      "estimatedMinutes": 60,
+      "audience": ["产品", "市场", "战略"],
+      "scenarios": ["研究与学习", "汇报与分析"],
+      "tools": ["Perplexity", "Claude", "Notion"],
+      "tags": ["竞品", "研究", "Perplexity"],
+      "riskHint": "来源质量需人工判断，避免引用低质量博客",
+      "sections": [
+        { "heading": "适用场景与目标产出", "body": "适用于新产品立项、季度复盘、投资决策前的竞品扫描。目标产出是一份包含竞品定位、核心功能、价格策略、机会点和风险点的对比文档。" },
+        { "heading": "工具组合选型", "body": "高性价比：Perplexity 免费版 + Claude 免费版，先用 Perplexity 搜资料，再用 Claude 整理。顶配：Perplexity Pro + Claude Pro，适合需要深度来源追踪和高频分析的团队。" },
+        { "heading": "可复制提示词", "body": "请基于以下信息，用表格对比 3 款竞品的：定位、核心功能、定价、优缺点、机会点。最后给出 3 条可执行建议。" },
+        { "heading": "完整工作流", "body": "1. 用 Perplexity 搜索竞品信息并保存来源；2. 用 Claude 整理成对比表格；3. 人工剔除低质量来源；4. 在 Notion 中沉淀为可复用模板。" },
+        { "heading": "常见坑点与避雷", "body": "不要直接复制 Perplexity 引用的内容而不验证。优先使用官网、财报、权威媒体报道。注意信息时效性。" }
+      ]
+    },
+    {
+      "id": "pkg-literature-notes",
+      "pkgNumber": "PKG 03",
+      "title": "文献阅读与笔记整理",
+      "problem": "读论文慢、笔记散乱、后续检索困难",
+      "goal": "建立一套可复用的文献阅读和笔记系统",
+      "costLevel": "free",
+      "costLabel": "免费",
+      "estimatedMinutes": 30,
+      "audience": ["学生", "研究人员"],
+      "scenarios": ["研究与学习"],
+      "tools": ["Perplexity", "Claude", "Notion"],
+      "tags": ["文献", "笔记", "研究"],
+      "riskHint": "AI 总结不能替代阅读原文，关键论证需自己理解",
+      "sections": [
+        { "heading": "适用场景与目标产出", "body": "适用于文献综述、课程论文、研究项目。目标产出是可检索的文献笔记库和概念关系图。" },
+        { "heading": "工具组合选型", "body": "高性价比/免费：Perplexity 免费版 + Claude 免费版 + Notion 免费版。顶配：Perplexity Pro + Claude Pro + Notion Plus，适合需要大量阅读和团队协作的研究组。" },
+        { "heading": "可复制提示词", "body": "请总结这篇论文的研究问题、方法、主要发现、局限和与你研究的关系。用中文输出，控制在 200 字以内。" },
+        { "heading": "完整工作流", "body": "1. 用 Perplexity 建立领域地图；2. 用 Claude 拆解论文结构；3. 在 Notion 制作文献摘要卡片；4. 建立概念关系图。" },
+        { "heading": "常见坑点与避雷", "body": "不要只读 AI 总结。关键数据、方法论、结论的适用范围必须回到原文确认。避免把 AI 的“合理推断”当成论文观点。" }
+      ]
+    },
+    {
+      "id": "pkg-short-video-script",
+      "pkgNumber": "PKG 04",
+      "title": "短视频脚本拆包",
+      "problem": "短视频选题和脚本产出不稳定，容易陷入创意枯竭",
+      "goal": "用 AI 把选题快速拆成可拍摄的脚本结构",
+      "costLevel": "low",
+      "costLabel": "低付费",
+      "estimatedMinutes": 20,
+      "audience": ["内容创作者", "自媒体运营"],
+      "scenarios": ["内容创作"],
+      "tools": ["ChatGPT", "Midjourney"],
+      "tags": ["短视频", "脚本", "内容创作"],
+      "riskHint": "AI 生成的选题可能同质化，需结合自身定位调整",
+      "sections": [
+        { "heading": "适用场景与目标产出", "body": "适用于短视频日更、系列选题策划、广告脚本初稿。目标产出是一份包含选题角度、钩子、分镜、口播稿和视觉参考的脚本。" },
+        { "heading": "工具组合选型", "body": "高性价比：ChatGPT Plus 负责脚本，Midjourney 基础版负责封面概念图。顶配：ChatGPT Team + Midjourney Pro，适合团队协作和大量出图。" },
+        { "heading": "可复制提示词", "body": "请为[目标受众]设计一条 60 秒短视频脚本。要求：前 3 秒有强钩子，中间有 3 个信息点，结尾有行动号召。输出分镜、口播稿和画面描述。" },
+        { "heading": "完整工作流", "body": "1. 用 ChatGPT 批量生成选题；2. 选择最优选题并拆成脚本；3. 用 Midjourney 生成封面或分镜参考；4. 人工润色口播稿。" },
+        { "heading": "常见坑点与避雷", "body": "不要直接发布 AI 写的口播稿。AI 常写“正确的废话”，需要加入个人案例、数据和情绪点。" }
+      ]
+    },
+    {
+      "id": "pkg-prd-generation",
+      "pkgNumber": "PKG 05",
+      "title": "产品需求文档生成包",
+      "problem": "写 PRD 耗时，容易遗漏边界场景和验收标准",
+      "goal": "把产品想法快速转成结构清晰、可落地的 PRD 初稿",
+      "costLevel": "medium",
+      "costLabel": "中付费",
+      "estimatedMinutes": 45,
+      "audience": ["产品经理", "创业者"],
+      "scenarios": ["汇报与分析", "自动化与协作"],
+      "tools": ["Claude", "ChatGPT", "Notion"],
+      "tags": ["PRD", "产品", "文档"],
+      "riskHint": "PRD 必须与研发、设计对齐，AI 初稿不能替代评审",
+      "sections": [
+        { "heading": "适用场景与目标产出", "body": "适用于新功能立项、需求评审前准备、敏捷迭代文档。目标产出是包含背景、目标用户、功能描述、流程图、验收标准和风险点的 PRD 初稿。" },
+        { "heading": "工具组合选型", "body": "高性价比：Claude 免费版 + Notion 免费版。顶配：Claude Pro + ChatGPT Plus + Notion Plus，利用两者互补生成更全面的需求分析。" },
+        { "heading": "可复制提示词", "body": "请根据以下产品想法，生成一份 PRD 初稿，包含：1）背景与目标；2）目标用户；3）功能描述；4）用户故事；5）验收标准；6）边界情况；7）风险点。" },
+        { "heading": "完整工作流", "body": "1. 用 Claude 生成 PRD 结构；2. 用 ChatGPT 补充边界场景和测试用例；3. 在 Notion 中整理并邀请团队评审；4. 根据评审结果迭代。" },
+        { "heading": "常见坑点与避雷", "body": "AI 容易把显而易见的内容写得很长，却遗漏业务规则和技术约束。必须让研发和设计参与评审。" }
+      ]
+    }
+  ],
+  "marketPackages": [
+    {
+      "id": "market-customer-followup",
+      "title": "客户访谈跟进方案",
+      "problem": "销售/客户成功跟进客户时，容易遗漏关键信息和下一步行动",
+      "audience": ["销售", "客户成功"],
+      "tools": ["Claude", "Notion"],
+      "costLevel": "free",
+      "costLabel": "免费",
+      "estimatedMinutes": 20,
+      "author": "张敏",
+      "authorTitle": "客户成功经理",
+      "likes": 128,
+      "favorites": 45,
+      "publishedAt": "2026-08-08",
+      "tags": ["销售", "客户成功", "跟进"],
+      "scenarios": ["汇报与分析", "团队协作"],
+      "sections": [
+        { "heading": "提示词", "body": "你是一位客户成功专家。请从以下客户访谈记录中提取：客户痛点、已承诺事项、下一步行动、风险信号。用中文输出。" },
+        { "heading": "工作流", "body": "1. 记录访谈要点；2. 用 Claude 提取结构化信息；3. 在 Notion 客户数据库更新跟进状态；4. 设置下次跟进提醒。" },
+        { "heading": "避雷经验", "body": "不要把 AI 提取的“客户意向”直接当成成交信号。关键承诺必须回听录音确认。" },
+        { "heading": "成本说明", "body": "Claude 免费版 + Notion 免费版即可运行，适合个人和小团队。" }
+      ]
+    },
+    {
+      "id": "market-ppt-outline",
+      "title": "AI PPT 大纲速成",
+      "problem": "做 PPT 前思路混乱，花费大量时间在排版而非内容",
+      "audience": ["运营", "管理者", "咨询"],
+      "tools": ["ChatGPT", "Gamma"],
+      "costLevel": "low",
+      "costLabel": "低付费",
+      "estimatedMinutes": 25,
+      "author": "李想",
+      "authorTitle": "运营负责人",
+      "likes": 96,
+      "favorites": 32,
+      "publishedAt": "2026-08-07",
+      "tags": ["PPT", "汇报", "Gamma"],
+      "scenarios": ["汇报与分析"],
+      "sections": [
+        { "heading": "提示词", "body": "请为以下主题生成一份 PPT 大纲：目标受众是[角色]，目标是[目标]，风格是[风格]。每页包含标题、3 个要点和一张图的建议。" },
+        { "heading": "工作流", "body": "1. 用 ChatGPT 生成大纲；2. 导入 Gamma 或 PowerPoint；3. 人工调整叙事逻辑；4. 补充数据图表。" },
+        { "heading": "避雷经验", "body": "AI 生成的大纲常过于平铺直叙。建议手动加入一个反直觉论点或案例，增强说服力。" },
+        { "heading": "成本说明", "body": "ChatGPT Plus 约 ¥150/月，Gamma 免费版基本够用。" }
+      ]
+    },
+    {
+      "id": "market-interview-questions",
+      "title": "面试题整理工作流",
+      "problem": "面试官准备问题耗时，候选人复用率低",
+      "audience": ["HR", "用人经理"],
+      "tools": ["Claude", "Notion"],
+      "costLevel": "free",
+      "costLabel": "免费",
+      "estimatedMinutes": 40,
+      "author": "王磊",
+      "authorTitle": "HRBP",
+      "likes": 74,
+      "favorites": 21,
+      "publishedAt": "2026-08-06",
+      "tags": ["招聘", "面试", "HR"],
+      "scenarios": ["自动化与协作"],
+      "sections": [
+        { "heading": "提示词", "body": "请为[岗位名称]生成 10 道面试题，包含：行为题 3 道、专业题 4 道、情景题 2 道、价值观题 1 道。每道题附上考察点和参考答案要点。" },
+        { "heading": "工作流", "body": "1. 输入岗位 JD；2. Claude 生成题库；3. 在 Notion 中建立题库数据库；4. 面试后记录评分和反馈。" },
+        { "heading": "避雷经验", "body": "不要完全依赖 AI 出题。岗位特殊要求、团队文化、业务阶段都需要人工补充。" },
+        { "heading": "成本说明", "body": "Claude 免费版 + Notion 免费版即可。" }
+      ]
+    }
+  ],
+  "assistantScenarios": [
+    {
+      "keywords": ["会议", "访谈", "纪要", "周报"],
+      "title": "会议纪要转周报",
+      "packageId": "pkg-meeting-to-weekly",
+      "recommendation": "推荐方案：Claude + Notion 会议纪要转周报",
+      "tools": ["Claude", "Notion"],
+      "prompt": "你是一位会议纪要整理专家。请从以下访谈文本中提取：1）关键结论（3–5 条）；2）行动项（含负责人、截止日期）；3）风险或阻塞；4）下周重点。用中文输出，使用 Markdown 列表。",
+      "workflow": ["转写录音得到文字稿", "用 Claude 提取结构化摘要", "将结果填入 Notion 周报模板", "人工复核事实与数字", "分享链接并 @ 相关负责人"],
+      "costEstimate": "Claude 免费版 + Notion 免费版即可；重度使用建议 Claude Pro + Notion Plus，约 ¥300/月",
+      "risks": "必须人工复核日期、人名、数字和责任人，AI 可能合理推测",
+      "fallback": "预算有限时，只使用手机自带录音转文字 + 免费版 Claude 整理要点"
+    },
+    {
+      "keywords": ["竞品", "竞争", "对比", "分析"],
+      "title": "竞品分析速用包",
+      "packageId": "pkg-competitor-analysis",
+      "recommendation": "推荐方案：Perplexity + Claude 竞品分析",
+      "tools": ["Perplexity", "Claude"],
+      "prompt": "请基于以下信息，用表格对比 3 款竞品的：定位、核心功能、定价、优缺点、机会点。最后给出 3 条可执行建议。",
+      "workflow": ["用 Perplexity 搜索竞品信息并保存来源", "用 Claude 整理成对比表格", "人工剔除低质量来源", "在 Notion 中沉淀为可复用模板"],
+      "costEstimate": "Perplexity 免费版 + Claude 免费版起步；深度研究建议 Perplexity Pro，约 ¥150/月",
+      "risks": "来源质量参差不齐，优先使用官网和权威媒体",
+      "fallback": "只用搜索引擎 + 表格手动整理，AI 辅助生成结论段落"
+    },
+    {
+      "keywords": ["论文", "文献", "阅读", "笔记"],
+      "title": "文献阅读与笔记整理",
+      "packageId": "pkg-literature-notes",
+      "recommendation": "推荐方案：Perplexity + Claude + Notion 文献阅读系统",
+      "tools": ["Perplexity", "Claude", "Notion"],
+      "prompt": "请总结这篇论文的研究问题、方法、主要发现、局限和与你研究的关系。用中文输出，控制在 200 字以内。",
+      "workflow": ["用 Perplexity 建立领域地图", "用 Claude 拆解论文结构", "在 Notion 制作文献摘要卡片", "建立概念关系图"],
+      "costEstimate": "三件套免费版即可满足学生需求",
+      "risks": "AI 总结不能替代阅读原文",
+      "fallback": "不使用 Perplexity，直接用学校数据库 + Claude 辅助理解"
+    }
+  ]
+}

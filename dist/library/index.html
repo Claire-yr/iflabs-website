@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>工具库 | I.F. Labs</title>
+  <meta name="description" content="AI 工具档案库，包含价格、平台和适用场景。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=3">
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="navbar-logo">
+          <span class="navbar-logo-mark">IF</span>
+          <span>I.F. Labs</span>
+        </a>
+        <nav class="navbar-links" aria-label="主导航">
+          <a href="/reviews" class="navbar-link">评测<span class="sr-only">Reviews</span></a>
+<a href="/guides" class="navbar-link">方案<span class="sr-only">Guides</span></a>
+<a href="/packages" class="navbar-link">AI 速用包<span class="sr-only">Packages</span></a>
+<a href="/library" class="navbar-link active">工具库<span class="navbar-status">BETA</span><span class="sr-only">Library</span></a>
+<a href="/compare" class="navbar-link">对比<span class="navbar-status">BETA</span><span class="sr-only">Compare</span></a>
+<a href="/about" class="navbar-link">关于<span class="sr-only">About</span></a>
+        </nav>
+        <div class="navbar-actions">
+          <a href="/search" class="navbar-icon" aria-label="搜索">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          </a>
+          <button class="navbar-menu-btn" id="mobile-menu-button" aria-expanded="false" aria-label="打开菜单">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu container" id="mobile-menu" aria-label="移动端导航">
+        <a href="/reviews">评测</a>
+<a href="/guides">方案</a>
+<a href="/packages">AI 速用包</a>
+<a href="/library">工具库</a>
+<a href="/compare">对比</a>
+<a href="/about">关于</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <header class="archive-header">
+  <div class="container">
+    <p class="section-label mb-2">Library</p>
+    <h1 class="text-display archive-title">工具库</h1>
+    <p class="archive-description">已验证的 AI 工具档案，包含价格、平台、适用场景和最新核验时间。</p>
+    <div class="archive-stats">
+      <span>3 款工具</span>
+      <span>2 个分类</span>
+      <span>持续更新</span>
+    </div>
+  </div>
+</header>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="filters">
+      <button class="filter-chip active" data-filter="category" data-value="all" data-group="cat">全部</button>
+      <button class="filter-chip" data-filter="category" data-value="搜索研究">搜索研究</button>
+<button class="filter-chip" data-filter="category" data-value="聊天模型">聊天模型</button>
+    </div>
+    <div class="content-grid content-grid-3" style="margin-top: var(--space-4);">
+      <article class="card review-card" data-filterable data-category="聊天模型">
+  <div class="review-card-header">
+    <span class="review-card-tool">Anthropic</span>
+    <span class="badge badge-status">active</span>
+  </div>
+  <h3 class="review-card-title"><a href="/library/claude.html">Claude</a></h3>
+  <p class="review-card-summary">以长文本理解和自然中文表达见长的对话式 AI 助手。</p>
+  <div class="review-card-footer">
+    <span class="tag">聊天模型</span>
+    <span class="tag">免费版有限额度；Pro $20/月</span>
+  </div>
+</article>
+<article class="card review-card" data-filterable data-category="聊天模型">
+  <div class="review-card-header">
+    <span class="review-card-tool">OpenAI</span>
+    <span class="badge badge-status">active</span>
+  </div>
+  <h3 class="review-card-title"><a href="/library/chatgpt.html">ChatGPT</a></h3>
+  <p class="review-card-summary">综合能力最强的 AI 工作平台，支持插件、联网、多模态和团队协作。</p>
+  <div class="review-card-footer">
+    <span class="tag">聊天模型</span>
+    <span class="tag">免费版；Plus $20/月；Team $25/人/月</span>
+  </div>
+</article>
+<article class="card review-card" data-filterable data-category="搜索研究">
+  <div class="review-card-header">
+    <span class="review-card-tool">Perplexity AI</span>
+    <span class="badge badge-status">active</span>
+  </div>
+  <h3 class="review-card-title"><a href="/library/perplexity.html">Perplexity</a></h3>
+  <p class="review-card-summary">带来源引用的 AI 搜索研究工具。</p>
+  <div class="review-card-footer">
+    <span class="tag">搜索研究</span>
+    <span class="tag">免费版；Pro $20/月</span>
+  </div>
+</article>
+    </div>
+    <div id="filter-empty-state" class="text-center mt-4" style="display: none;">
+      <p class="text-body">没有符合条件的工具。</p>
+    </div>
+  </div>
+</section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-logo mb-2">
+            <span class="navbar-logo-mark">IF</span>
+            <span>I.F. Labs</span>
+          </div>
+          <p class="text-small">有结论的 AI 效率实验室</p>
+          <p class="text-small" style="color: var(--color-text-muted); margin-top: 8px;">用真实测试和明确结论，帮你决定用哪款 AI 工具、怎么把它用好。</p>
+        </div>
+        <div>
+          <div class="footer-heading">内容</div>
+          <div class="footer-links">
+            <a href="/reviews">评测</a>
+            <a href="/guides">方案</a>
+            <a href="/packages">AI 速用包</a>
+            <a href="/market">方案集市</a>
+            <a href="/library">工具库</a>
+            <a href="/compare">对比</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">信息</div>
+          <div class="footer-links">
+            <a href="/about">关于我们</a>
+            <a href="/about#methodology">评测方法</a>
+            <a href="/about#criteria">评分标准</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">订阅</div>
+          <div class="footer-links">
+            <a href="/about#newsletter">每周雷达</a>
+            <a href="/search">搜索全站</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p class="text-mono" style="color: var(--color-text-muted);">© 2026 I.F. Labs. 保留所有权利。</p>
+        <div class="footer-social">
+          <a href="#">X</a>
+          <a href="#">Newsletter</a>
+          <a href="#">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/js/main.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 速用包 | I.F. Labs</title>
+  <meta name="description" content="针对具体业务问题的开箱即用 AI 落地包。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=3">
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="navbar-logo">
+          <span class="navbar-logo-mark">IF</span>
+          <span>I.F. Labs</span>
+        </a>
+        <nav class="navbar-links" aria-label="主导航">
+          <a href="/reviews" class="navbar-link">评测<span class="sr-only">Reviews</span></a>
+<a href="/guides" class="navbar-link">方案<span class="sr-only">Guides</span></a>
+<a href="/packages" class="navbar-link active">AI 速用包<span class="sr-only">Packages</span></a>
+<a href="/library" class="navbar-link">工具库<span class="navbar-status">BETA</span><span class="sr-only">Library</span></a>
+<a href="/compare" class="navbar-link">对比<span class="navbar-status">BETA</span><span class="sr-only">Compare</span></a>
+<a href="/about" class="navbar-link">关于<span class="sr-only">About</span></a>
+        </nav>
+        <div class="navbar-actions">
+          <a href="/search" class="navbar-icon" aria-label="搜索">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          </a>
+          <button class="navbar-menu-btn" id="mobile-menu-button" aria-expanded="false" aria-label="打开菜单">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu container" id="mobile-menu" aria-label="移动端导航">
+        <a href="/reviews">评测</a>
+<a href="/guides">方案</a>
+<a href="/packages">AI 速用包</a>
+<a href="/library">工具库</a>
+<a href="/compare">对比</a>
+<a href="/about">关于</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="packages-hero">
+  <div class="container">
+    <div class="packages-layout">
+      <div>
+        <p class="section-label mb-2" style="color: rgba(247,247,244,0.6);">Packages</p>
+        <h1 class="text-display" style="margin-bottom: var(--space-3);">AI 速用包</h1>
+        <p class="packages-hero-description">针对具体业务问题的开箱即用 AI 落地包：工具组合选型 + 高质量提示词 + 完整工作流 + 分步执行。</p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-signal" id="open-assistant">生成我的方案</button>
+          <a href="/market" class="btn btn-secondary" style="border-color: rgba(247,247,244,0.3); color: var(--color-paper);">去方案集市</a>
+        </div>
+      </div>
+      <div class="assistant-panel">
+        <div class="assistant-panel-title">智能方案助手</div>
+        <p class="assistant-panel-desc">输入你的需求、场景和预算约束，自动生成高性价比的定制解决方案。</p>
+        <button type="button" class="btn btn-signal" id="open-assistant-panel" style="width: 100%;">开始生成</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="tab-nav">
+      <a href="/packages" class="tab-link active">官方预制包</a>
+      <button type="button" class="tab-link" id="open-assistant-tab">智能方案助手</button>
+      <a href="/market" class="tab-link">方案集市</a>
+    </div>
+    <div class="filters">
+      <button class="filter-chip active" data-filter="scenarios" data-value="all" data-group="scene">全部场景</button>
+      <button class="filter-chip" data-filter="scenarios" data-value="内容创作">内容创作</button>
+<button class="filter-chip" data-filter="scenarios" data-value="团队协作">团队协作</button>
+<button class="filter-chip" data-filter="scenarios" data-value="汇报与分析">汇报与分析</button>
+<button class="filter-chip" data-filter="scenarios" data-value="研究与学习">研究与学习</button>
+<button class="filter-chip" data-filter="scenarios" data-value="自动化与协作">自动化与协作</button>
+    </div>
+    <div class="filters">
+      <button class="filter-chip active" data-filter="cost" data-value="all" data-group="cost">全部成本</button>
+      <button class="filter-chip" data-filter="cost" data-value="free">免费</button>
+<button class="filter-chip" data-filter="cost" data-value="low">低付费</button>
+<button class="filter-chip" data-filter="cost" data-value="medium">中付费</button>
+<button class="filter-chip" data-filter="cost" data-value="high">高付费</button>
+    </div>
+    <div class="filters">
+      <button class="filter-chip active" data-filter="tools" data-value="all" data-group="tools">全部工具</button>
+      <button class="filter-chip" data-filter="tools" data-value="ChatGPT">ChatGPT</button>
+<button class="filter-chip" data-filter="tools" data-value="Claude">Claude</button>
+<button class="filter-chip" data-filter="tools" data-value="Midjourney">Midjourney</button>
+<button class="filter-chip" data-filter="tools" data-value="Notion">Notion</button>
+<button class="filter-chip" data-filter="tools" data-value="Perplexity">Perplexity</button>
+    </div>
+    <div class="content-grid content-grid-3" style="margin-top: var(--space-4);">
+      <article class="package-card" data-filterable data-scenarios="汇报与分析,团队协作" data-cost="low" data-tools="Claude,Notion">
+  <div class="package-card-header">
+    <span class="package-card-number">PKG 01</span>
+    <span class="cost-badge cost-low">低付费</span>
+  </div>
+  <h3 class="package-card-title"><a href="/packages/pkg-meeting-to-weekly.html" target="_blank" rel="noopener">会议纪要转周报</a></h3>
+  <p class="package-card-problem">会议或访谈结束后，整理纪要耗时且容易遗漏行动项</p>
+  <p class="package-card-goal">目标：30 分钟内把录音或速记变成可直接发送的结构化周报</p>
+  <div class="package-card-footer">
+    <span class="tag">Claude</span> <span class="tag">Notion</span>
+    <span class="tag">会议</span> <span class="tag">周报</span>
+    <span class="tag">30 分钟</span>
+  </div>
+  <div class="package-card-risk">事实、日期、人名必须人工复核</div>
+  <a href="/packages/pkg-meeting-to-weekly.html" class="btn btn-primary package-card-cta" target="_blank" rel="noopener">查看完整方案</a>
+</article>
+<article class="package-card" data-filterable data-scenarios="研究与学习,汇报与分析" data-cost="low" data-tools="Perplexity,Claude,Notion">
+  <div class="package-card-header">
+    <span class="package-card-number">PKG 02</span>
+    <span class="cost-badge cost-low">低付费</span>
+  </div>
+  <h3 class="package-card-title"><a href="/packages/pkg-competitor-analysis.html" target="_blank" rel="noopener">竞品分析速用包</a></h3>
+  <p class="package-card-problem">做竞品分析时信息零散、来源不可靠、整理耗时</p>
+  <p class="package-card-goal">目标：1 小时内完成一份带来源、有结论的竞品对比文档</p>
+  <div class="package-card-footer">
+    <span class="tag">Perplexity</span> <span class="tag">Claude</span> <span class="tag">Notion</span>
+    <span class="tag">竞品</span> <span class="tag">研究</span>
+    <span class="tag">60 分钟</span>
+  </div>
+  <div class="package-card-risk">来源质量需人工判断，避免引用低质量博客</div>
+  <a href="/packages/pkg-competitor-analysis.html" class="btn btn-primary package-card-cta" target="_blank" rel="noopener">查看完整方案</a>
+</article>
+<article class="package-card" data-filterable data-scenarios="研究与学习" data-cost="free" data-tools="Perplexity,Claude,Notion">
+  <div class="package-card-header">
+    <span class="package-card-number">PKG 03</span>
+    <span class="cost-badge cost-free">免费</span>
+  </div>
+  <h3 class="package-card-title"><a href="/packages/pkg-literature-notes.html" target="_blank" rel="noopener">文献阅读与笔记整理</a></h3>
+  <p class="package-card-problem">读论文慢、笔记散乱、后续检索困难</p>
+  <p class="package-card-goal">目标：建立一套可复用的文献阅读和笔记系统</p>
+  <div class="package-card-footer">
+    <span class="tag">Perplexity</span> <span class="tag">Claude</span> <span class="tag">Notion</span>
+    <span class="tag">文献</span> <span class="tag">笔记</span> <span class="tag">研究</span>
+    <span class="tag">30 分钟</span>
+  </div>
+  <div class="package-card-risk">AI 总结不能替代阅读原文，关键论证需自己理解</div>
+  <a href="/packages/pkg-literature-notes.html" class="btn btn-primary package-card-cta" target="_blank" rel="noopener">查看完整方案</a>
+</article>
+<article class="package-card" data-filterable data-scenarios="内容创作" data-cost="low" data-tools="ChatGPT,Midjourney">
+  <div class="package-card-header">
+    <span class="package-card-number">PKG 04</span>
+    <span class="cost-badge cost-low">低付费</span>
+  </div>
+  <h3 class="package-card-title"><a href="/packages/pkg-short-video-script.html" target="_blank" rel="noopener">短视频脚本拆包</a></h3>
+  <p class="package-card-problem">短视频选题和脚本产出不稳定，容易陷入创意枯竭</p>
+  <p class="package-card-goal">目标：用 AI 把选题快速拆成可拍摄的脚本结构</p>
+  <div class="package-card-footer">
+    <span class="tag">ChatGPT</span> <span class="tag">Midjourney</span>
+    <span class="tag">短视频</span> <span class="tag">脚本</span> <span class="tag">内容创作</span>
+    <span class="tag">20 分钟</span>
+  </div>
+  <div class="package-card-risk">AI 生成的选题可能同质化，需结合自身定位调整</div>
+  <a href="/packages/pkg-short-video-script.html" class="btn btn-primary package-card-cta" target="_blank" rel="noopener">查看完整方案</a>
+</article>
+<article class="package-card" data-filterable data-scenarios="汇报与分析,自动化与协作" data-cost="medium" data-tools="Claude,ChatGPT,Notion">
+  <div class="package-card-header">
+    <span class="package-card-number">PKG 05</span>
+    <span class="cost-badge cost-medium">中付费</span>
+  </div>
+  <h3 class="package-card-title"><a href="/packages/pkg-prd-generation.html" target="_blank" rel="noopener">产品需求文档生成包</a></h3>
+  <p class="package-card-problem">写 PRD 耗时，容易遗漏边界场景和验收标准</p>
+  <p class="package-card-goal">目标：把产品想法快速转成结构清晰、可落地的 PRD 初稿</p>
+  <div class="package-card-footer">
+    <span class="tag">Claude</span> <span class="tag">ChatGPT</span> <span class="tag">Notion</span>
+    <span class="tag">PRD</span> <span class="tag">产品</span> <span class="tag">文档</span>
+    <span class="tag">45 分钟</span>
+  </div>
+  <div class="package-card-risk">PRD 必须与研发、设计对齐，AI 初稿不能替代评审</div>
+  <a href="/packages/pkg-prd-generation.html" class="btn btn-primary package-card-cta" target="_blank" rel="noopener">查看完整方案</a>
+</article>
+    </div>
+    <div id="filter-empty-state" class="text-center mt-4" style="display: none;">
+      <p class="text-body">没有符合条件的速用包。</p>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="assistant-modal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="modal-header">
+      <h2 class="modal-title" id="assistant-modal-title">智能方案助手</h2>
+      <button type="button" class="modal-close" id="assistant-modal-close" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div>
+          <div class="form-group">
+            <label class="form-label">你要解决什么问题？</label>
+            <textarea class="form-textarea assistant-textarea" id="assistant-problem" placeholder="例如：每周要把一小时访谈录音整理成周报..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">当前使用场景？</label>
+            <input type="text" class="form-input" id="assistant-scenario" placeholder="例如：团队协作、学生研究、内容创作">
+          </div>
+          <div class="form-group">
+            <label class="form-label">预算或成本限制？</label>
+            <select class="form-select" id="assistant-budget">
+              <option value="free">尽量免费</option>
+              <option value="low">低付费（月均 ¥150 以内）</option>
+              <option value="medium">中付费（月均 ¥300 以内）</option>
+              <option value="high">不敏感，优先效果</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">希望产出什么结果？</label>
+            <input type="text" class="form-input" id="assistant-output" placeholder="例如：可直接发送的周报文档">
+          </div>
+          <button type="button" class="btn btn-signal" id="assistant-generate">生成我的方案</button>
+        </div>
+        <div class="modal-output" id="assistant-output-panel">
+          <div class="modal-output-title">推荐方案</div>
+          <p class="text-small" style="color: var(--color-text-secondary);">填写左侧信息并点击生成，即可获得工具组合、提示词和执行步骤。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-logo mb-2">
+            <span class="navbar-logo-mark">IF</span>
+            <span>I.F. Labs</span>
+          </div>
+          <p class="text-small">有结论的 AI 效率实验室</p>
+          <p class="text-small" style="color: var(--color-text-muted); margin-top: 8px;">用真实测试和明确结论，帮你决定用哪款 AI 工具、怎么把它用好。</p>
+        </div>
+        <div>
+          <div class="footer-heading">内容</div>
+          <div class="footer-links">
+            <a href="/reviews">评测</a>
+            <a href="/guides">方案</a>
+            <a href="/packages">AI 速用包</a>
+            <a href="/market">方案集市</a>
+            <a href="/library">工具库</a>
+            <a href="/compare">对比</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">信息</div>
+          <div class="footer-links">
+            <a href="/about">关于我们</a>
+            <a href="/about#methodology">评测方法</a>
+            <a href="/about#criteria">评分标准</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">订阅</div>
+          <div class="footer-links">
+            <a href="/about#newsletter">每周雷达</a>
+            <a href="/search">搜索全站</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p class="text-mono" style="color: var(--color-text-muted);">© 2026 I.F. Labs. 保留所有权利。</p>
+        <div class="footer-social">
+          <a href="#">X</a>
+          <a href="#">Newsletter</a>
+          <a href="#">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/js/main.js?v=3"></script>
+</body>
+</html>

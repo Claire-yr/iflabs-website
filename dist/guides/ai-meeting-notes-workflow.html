@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用 Claude 和 Notion，把一小时访谈录音整理成可执行周报 | I.F. Labs</title>
+  <meta name="description" content="通过 Claude 转写和结构化访谈内容，再用 Notion 整理成包含结论、待办、负责人和风险项的周报。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=3">
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="navbar-logo">
+          <span class="navbar-logo-mark">IF</span>
+          <span>I.F. Labs</span>
+        </a>
+        <nav class="navbar-links" aria-label="主导航">
+          <a href="/reviews" class="navbar-link">评测<span class="sr-only">Reviews</span></a>
+<a href="/guides" class="navbar-link active">方案<span class="sr-only">Guides</span></a>
+<a href="/packages" class="navbar-link">AI 速用包<span class="sr-only">Packages</span></a>
+<a href="/library" class="navbar-link">工具库<span class="navbar-status">BETA</span><span class="sr-only">Library</span></a>
+<a href="/compare" class="navbar-link">对比<span class="navbar-status">BETA</span><span class="sr-only">Compare</span></a>
+<a href="/about" class="navbar-link">关于<span class="sr-only">About</span></a>
+        </nav>
+        <div class="navbar-actions">
+          <a href="/search" class="navbar-icon" aria-label="搜索">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          </a>
+          <button class="navbar-menu-btn" id="mobile-menu-button" aria-expanded="false" aria-label="打开菜单">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu container" id="mobile-menu" aria-label="移动端导航">
+        <a href="/reviews">评测</a>
+<a href="/guides">方案</a>
+<a href="/packages">AI 速用包</a>
+<a href="/library">工具库</a>
+<a href="/compare">对比</a>
+<a href="/about">关于</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <article class="detail-header">
+  <div class="container content-table">
+    <div class="detail-breadcrumb">
+      <a href="/">首页</a> / <a href="/guides">方案</a> / 汇报与分析
+    </div>
+    <span class="badge badge-status mb-2">beginner · 5 步 · 25 分钟</span>
+    <h1 class="text-display detail-title">用 Claude 和 Notion，把一小时访谈录音整理成可执行周报</h1>
+    <p class="detail-summary">通过 Claude 转写和结构化访谈内容，再用 Notion 整理成包含结论、待办、负责人和风险项的周报。</p>
+    <div class="metadata-row detail-meta">
+      <span>产出：一份包含结论、待办、负责人和风险项的周报</span>
+      <span>发布：2026-08-05</span>
+      <span>更新：2026-08-06</span>
+      <span>阅读：12 分钟</span>
+    </div>
+    <div class="detail-meta">
+      <span class="tag">Claude</span> <span class="tag">Notion</span>
+      <span class="tag">汇报与分析</span> <span class="tag">团队协作</span>
+    </div>
+  </div>
+</article>
+
+<div class="article-content">
+  <div class="container content-table">
+    <section class="conclusion conclusion-positive mb-4">
+      <h2 class="text-h3 mb-1">方案目标</h2>
+      <p class="mb-0">一份包含结论、待办、负责人和风险项的周报</p>
+    </section>
+
+    <h2>适用角色</h2>
+    <ul>
+      <li>运营</li>
+<li>产品</li>
+<li>项目经理</li>
+    </ul>
+
+    <h2>你将获得</h2>
+    <ul>
+      <li>访谈转写文本</li>
+<li>结构化摘要</li>
+<li>可执行周报模板</li>
+    </ul>
+
+    <h2>执行步骤</h2>
+    <div class="step">
+  <span class="step-number">步骤 1</span>
+  <h3 class="step-title">准备</h3>
+  <p class="step-purpose">确保你有一段完整的访谈录音或已转写的文本，以及一个用于整理周报的 Notion 页面。建议提前准备好周报模板，包含“本周结论”“待办事项”“负责人”“风险与阻塞”四个区块。</p>
+</div>
+
+<div class="step">
+  <span class="step-number">步骤 2</span>
+  <h3 class="step-title">转写录音</h3>
+  <p class="step-purpose">将录音上传至 Claude 或使用转写工具得到文字稿。如果录音质量较差，先用降噪或转写工具处理，再把文本交给 Claude。</p>
+</div>
+
+<div class="step">
+  <span class="step-number">步骤 3</span>
+  <h3 class="step-title">提取结构化摘要</h3>
+  <p class="step-purpose">给 Claude 一段提示词，要求它从访谈中提炼：关键结论、行动项、负责人、截止日期、风险点。使用 Artifacts 模式查看输出，便于复制。</p>
+</div>
+
+<div class="step">
+  <span class="step-number">步骤 4</span>
+  <h3 class="step-title">填入 Notion 周报</h3>
+  <p class="step-purpose">将 Claude 输出的内容粘贴到 Notion 周报模板的对应区块。对于行动项，建议转换成 Notion 待办或数据库条目，方便后续追踪。</p>
+</div>
+
+<div class="step">
+  <span class="step-number">步骤 5</span>
+  <h3 class="step-title">人工复核</h3>
+  <p class="step-purpose">检查事实、日期、人名和数字是否准确。Claude 偶尔会“合理推测”信息，这一步不能省略。</p>
+</div>
+
+<div class="step">
+  <span class="step-number">步骤 6</span>
+  <h3 class="step-title">发布与同步</h3>
+  <p class="step-purpose">将周报链接分享到团队频道或邮件列表。如果团队使用 Notion，可以直接 @ 相关负责人，或在评论中分配任务。</p>
+</div>
+
+    <h2>工具与场景</h2>
+    <p>本方案主要使用 Claude, Notion，适用于 汇报与分析, 团队协作 场景。</p>
+  </div>
+</div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-logo mb-2">
+            <span class="navbar-logo-mark">IF</span>
+            <span>I.F. Labs</span>
+          </div>
+          <p class="text-small">有结论的 AI 效率实验室</p>
+          <p class="text-small" style="color: var(--color-text-muted); margin-top: 8px;">用真实测试和明确结论，帮你决定用哪款 AI 工具、怎么把它用好。</p>
+        </div>
+        <div>
+          <div class="footer-heading">内容</div>
+          <div class="footer-links">
+            <a href="/reviews">评测</a>
+            <a href="/guides">方案</a>
+            <a href="/packages">AI 速用包</a>
+            <a href="/market">方案集市</a>
+            <a href="/library">工具库</a>
+            <a href="/compare">对比</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">信息</div>
+          <div class="footer-links">
+            <a href="/about">关于我们</a>
+            <a href="/about#methodology">评测方法</a>
+            <a href="/about#criteria">评分标准</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">订阅</div>
+          <div class="footer-links">
+            <a href="/about#newsletter">每周雷达</a>
+            <a href="/search">搜索全站</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p class="text-mono" style="color: var(--color-text-muted);">© 2026 I.F. Labs. 保留所有权利。</p>
+        <div class="footer-social">
+          <a href="#">X</a>
+          <a href="#">Newsletter</a>
+          <a href="#">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/js/main.js?v=3"></script>
+</body>
+</html>
