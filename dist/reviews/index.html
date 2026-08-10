@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>评测 | I.F. Labs</title>
+  <meta name="description" content="AI 工具深度评测，基于真实测试和明确结论。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=3">
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="navbar-logo">
+          <span class="navbar-logo-mark">IF</span>
+          <span>I.F. Labs</span>
+        </a>
+        <nav class="navbar-links" aria-label="主导航">
+          <a href="/reviews" class="navbar-link active">评测<span class="sr-only">Reviews</span></a>
+<a href="/guides" class="navbar-link">方案<span class="sr-only">Guides</span></a>
+<a href="/packages" class="navbar-link">AI 速用包<span class="sr-only">Packages</span></a>
+<a href="/library" class="navbar-link">工具库<span class="navbar-status">BETA</span><span class="sr-only">Library</span></a>
+<a href="/compare" class="navbar-link">对比<span class="navbar-status">BETA</span><span class="sr-only">Compare</span></a>
+<a href="/about" class="navbar-link">关于<span class="sr-only">About</span></a>
+        </nav>
+        <div class="navbar-actions">
+          <a href="/search" class="navbar-icon" aria-label="搜索">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          </a>
+          <button class="navbar-menu-btn" id="mobile-menu-button" aria-expanded="false" aria-label="打开菜单">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu container" id="mobile-menu" aria-label="移动端导航">
+        <a href="/reviews">评测</a>
+<a href="/guides">方案</a>
+<a href="/packages">AI 速用包</a>
+<a href="/library">工具库</a>
+<a href="/compare">对比</a>
+<a href="/about">关于</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <header class="archive-header">
+  <div class="container">
+    <p class="section-label mb-2">Reviews</p>
+    <h1 class="text-display archive-title">评测</h1>
+    <p class="archive-description">每篇评测基于同一套评分维度，回答一个核心问题：这款工具是否值得成为你工作流的一部分。</p>
+    <div class="archive-stats">
+      <span>5 篇评测</span>
+      <span>8 个分类</span>
+      <span>每月更新</span>
+    </div>
+  </div>
+</header>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="filters">
+      <button class="filter-chip active" data-filter="category" data-value="all" data-group="cat">全部</button>
+      <button class="filter-chip" data-filter="category" data-value="聊天模型">聊天模型</button>
+<button class="filter-chip" data-filter="category" data-value="搜索研究">搜索研究</button>
+<button class="filter-chip" data-filter="category" data-value="写作">写作</button>
+<button class="filter-chip" data-filter="category" data-value="图像">图像</button>
+<button class="filter-chip" data-filter="category" data-value="视频">视频</button>
+<button class="filter-chip" data-filter="category" data-value="自动化">自动化</button>
+<button class="filter-chip" data-filter="category" data-value="知识管理">知识管理</button>
+<button class="filter-chip" data-filter="category" data-value="开发">开发</button>
+    </div>
+    <div class="filters">
+      <button class="filter-chip active" data-filter="recommendation" data-value="recommend" data-group="rec">推荐</button>
+<button class="filter-chip" data-filter="recommendation" data-value="conditional" data-group="rec">视条件</button>
+<button class="filter-chip" data-filter="recommendation" data-value="not-recommend" data-group="rec">不推荐</button>
+    </div>
+    <div class="content-grid content-grid-3" style="margin-top: var(--space-4);">
+      <article class="card review-card" data-filterable data-category="聊天模型" data-recommendation="recommend" data-scenarios="写作与表达,研究与学习,汇报与分析">
+  <div class="review-card-header">
+    <span class="review-card-tool">Claude · 聊天模型</span>
+    <span class="badge badge-recommend">推荐</span>
+  </div>
+  <h3 class="review-card-title"><a href="/reviews/claude-sonnet-review.html">Claude Sonnet 4 中文长文改写：稳定，但不应替代事实核验</a></h3>
+  <p class="review-card-summary">Claude Sonnet 在中文长文改写和结构化输出上表现稳定，表达自然，但在高频事实核验任务中偶有遗漏，需要人工复核。</p>
+  <div class="review-card-footer">
+    <span class="tag">claude</span> <span class="tag">long-form-writing</span> <span class="tag">中文</span>
+    <span class="tag">8 分钟</span>
+  </div>
+</article>
+<article class="card review-card" data-filterable data-category="聊天模型" data-recommendation="recommend" data-scenarios="研究与学习,内容创作,自动化与协作">
+  <div class="review-card-header">
+    <span class="review-card-tool">ChatGPT · 聊天模型</span>
+    <span class="badge badge-recommend">推荐</span>
+  </div>
+  <h3 class="review-card-title"><a href="/reviews/chatgpt-gpt5-review.html">ChatGPT GPT-5：生态最强，但中文长文改写不如 Claude</a></h3>
+  <p class="review-card-summary">ChatGPT GPT-5 在工具生态、插件能力和实时信息上领先，但在中文长文改写和自然度上略逊于 Claude，适合需要集成多工具的工作流。</p>
+  <div class="review-card-footer">
+    <span class="tag">chatgpt</span> <span class="tag">research</span> <span class="tag">productivity</span>
+    <span class="tag">7 分钟</span>
+  </div>
+</article>
+<article class="card review-card" data-filterable data-category="搜索研究" data-recommendation="recommend" data-scenarios="研究与学习,汇报与分析">
+  <div class="review-card-header">
+    <span class="review-card-tool">Perplexity · 搜索研究</span>
+    <span class="badge badge-recommend">推荐</span>
+  </div>
+  <h3 class="review-card-title"><a href="/reviews/perplexity-search-review.html">Perplexity：研究型搜索的当前最优解，但不适合创意写作</a></h3>
+  <p class="review-card-summary">Perplexity 在信息检索、来源引用和研究效率上表现出色，是替代传统搜索引擎的有力工具，但在创意写作和开放式 brainstorm 上能力有限。</p>
+  <div class="review-card-footer">
+    <span class="tag">perplexity</span> <span class="tag">research</span>
+    <span class="tag">6 分钟</span>
+  </div>
+</article>
+<article class="card review-card" data-filterable data-category="知识管理" data-recommendation="conditional" data-scenarios="个人知识管理,团队协作,汇报与分析">
+  <div class="review-card-header">
+    <span class="review-card-tool">Notion AI · 知识管理</span>
+    <span class="badge badge-conditional">视条件推荐</span>
+  </div>
+  <h3 class="review-card-title"><a href="/reviews/notion-ai-review.html">Notion AI：知识库场景效率提升明显，但离开 Notion 无意义</a></h3>
+  <p class="review-card-summary">Notion AI 在已有 Notion 工作流的团队中能显著提升文档整理、摘要和初稿生成效率，但单独作为 AI 工具竞争力不足。</p>
+  <div class="review-card-footer">
+    <span class="tag">notion</span> <span class="tag">productivity</span>
+    <span class="tag">6 分钟</span>
+  </div>
+</article>
+<article class="card review-card" data-filterable data-category="图像" data-recommendation="recommend" data-scenarios="内容创作,设计">
+  <div class="review-card-header">
+    <span class="review-card-tool">Midjourney · 图像</span>
+    <span class="badge badge-recommend">推荐</span>
+  </div>
+  <h3 class="review-card-title"><a href="/reviews/midjourney-v7-review.html">Midjourney V7：审美天花板仍在，但可控性仍是短板</a></h3>
+  <p class="review-card-summary">Midjourney V7 在图像审美和风格一致性上保持领先，适合视觉探索和创意海报，但在精确可控性和产品设计中仍有局限。</p>
+  <div class="review-card-footer">
+    <span class="tag">midjourney</span> <span class="tag">productivity</span>
+    <span class="tag">6 分钟</span>
+  </div>
+</article>
+    </div>
+    <div id="filter-empty-state" class="text-center mt-4" style="display: none;">
+      <p class="text-body">没有符合条件的评测。</p>
+    </div>
+  </div>
+</section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-logo mb-2">
+            <span class="navbar-logo-mark">IF</span>
+            <span>I.F. Labs</span>
+          </div>
+          <p class="text-small">有结论的 AI 效率实验室</p>
+          <p class="text-small" style="color: var(--color-text-muted); margin-top: 8px;">用真实测试和明确结论，帮你决定用哪款 AI 工具、怎么把它用好。</p>
+        </div>
+        <div>
+          <div class="footer-heading">内容</div>
+          <div class="footer-links">
+            <a href="/reviews">评测</a>
+            <a href="/guides">方案</a>
+            <a href="/packages">AI 速用包</a>
+            <a href="/market">方案集市</a>
+            <a href="/library">工具库</a>
+            <a href="/compare">对比</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">信息</div>
+          <div class="footer-links">
+            <a href="/about">关于我们</a>
+            <a href="/about#methodology">评测方法</a>
+            <a href="/about#criteria">评分标准</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">订阅</div>
+          <div class="footer-links">
+            <a href="/about#newsletter">每周雷达</a>
+            <a href="/search">搜索全站</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p class="text-mono" style="color: var(--color-text-muted);">© 2026 I.F. Labs. 保留所有权利。</p>
+        <div class="footer-social">
+          <a href="#">X</a>
+          <a href="#">Newsletter</a>
+          <a href="#">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/js/main.js?v=3"></script>
+</body>
+</html>

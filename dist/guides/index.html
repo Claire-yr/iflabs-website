@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>方案 | I.F. Labs</title>
+  <meta name="description" content="AI 工具可复用工作流，包含步骤、模板和检查清单。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=3">
+</head>
+<body>
+  <div class="page">
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="/" class="navbar-logo">
+          <span class="navbar-logo-mark">IF</span>
+          <span>I.F. Labs</span>
+        </a>
+        <nav class="navbar-links" aria-label="主导航">
+          <a href="/reviews" class="navbar-link">评测<span class="sr-only">Reviews</span></a>
+<a href="/guides" class="navbar-link active">方案<span class="sr-only">Guides</span></a>
+<a href="/packages" class="navbar-link">AI 速用包<span class="sr-only">Packages</span></a>
+<a href="/library" class="navbar-link">工具库<span class="navbar-status">BETA</span><span class="sr-only">Library</span></a>
+<a href="/compare" class="navbar-link">对比<span class="navbar-status">BETA</span><span class="sr-only">Compare</span></a>
+<a href="/about" class="navbar-link">关于<span class="sr-only">About</span></a>
+        </nav>
+        <div class="navbar-actions">
+          <a href="/search" class="navbar-icon" aria-label="搜索">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+          </a>
+          <button class="navbar-menu-btn" id="mobile-menu-button" aria-expanded="false" aria-label="打开菜单">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu container" id="mobile-menu" aria-label="移动端导航">
+        <a href="/reviews">评测</a>
+<a href="/guides">方案</a>
+<a href="/packages">AI 速用包</a>
+<a href="/library">工具库</a>
+<a href="/compare">对比</a>
+<a href="/about">关于</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <header class="archive-header">
+  <div class="container">
+    <p class="section-label mb-2">Guides</p>
+    <h1 class="text-display archive-title">方案</h1>
+    <p class="archive-description">把 AI 工具串成可执行的工作流。每个方案包含步骤、时间、产出物和适用角色。</p>
+    <div class="archive-stats">
+      <span>3 个方案</span>
+      <span>3 个场景</span>
+      <span>持续更新</span>
+    </div>
+  </div>
+</header>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="filters">
+      <button class="filter-chip active" data-filter="scenarios" data-value="all" data-group="scene">全部场景</button>
+      <button class="filter-chip" data-filter="scenarios" data-value="团队协作">团队协作</button>
+<button class="filter-chip" data-filter="scenarios" data-value="汇报与分析">汇报与分析</button>
+<button class="filter-chip" data-filter="scenarios" data-value="研究与学习">研究与学习</button>
+    </div>
+    <div class="content-grid content-grid-3" style="margin-top: var(--space-4);">
+      <article class="card guide-card" data-filterable data-scenarios="汇报与分析,团队协作" data-tools="Claude,Notion" data-level="beginner">
+  <div class="guide-card-steps">5 步 · 25 分钟 · beginner</div>
+  <h3 class="guide-card-title"><a href="/guides/ai-meeting-notes-workflow.html">用 Claude 和 Notion，把一小时访谈录音整理成可执行周报</a></h3>
+  <p class="guide-card-result">产出：一份包含结论、待办、负责人和风险项的周报</p>
+  <p class="guide-card-desc">通过 Claude 转写和结构化访谈内容，再用 Notion 整理成包含结论、待办、负责人和风险项的周报。</p>
+  <div class="guide-card-meta">
+    <span class="tag">claude</span> <span class="tag">notion</span> <span class="tag">productivity</span>
+    <span>12 分钟</span>
+  </div>
+</article>
+<article class="card guide-card" data-filterable data-scenarios="研究与学习" data-tools="Perplexity,Claude,Notion" data-level="beginner">
+  <div class="guide-card-steps">4 步 · 30 分钟 · beginner</div>
+  <h3 class="guide-card-title"><a href="/guides/ai-literature-reading-student.html">大学生 AI 文献阅读工作流：从泛读到笔记的 30 分钟流程</a></h3>
+  <p class="guide-card-result">产出：一套可复用的文献阅读笔记系统</p>
+  <p class="guide-card-desc">用 Perplexity 快速建立领域认知，用 Claude 拆解论文结构，用 Notion 建立可检索的文献笔记库。</p>
+  <div class="guide-card-meta">
+    <span class="tag">perplexity</span> <span class="tag">claude</span> <span class="tag">research</span>
+    <span>10 分钟</span>
+  </div>
+</article>
+<article class="card guide-card" data-filterable data-scenarios="汇报与分析" data-tools="ChatGPT" data-level="beginner">
+  <div class="guide-card-steps">3 步 · 15 分钟 · beginner</div>
+  <h3 class="guide-card-title"><a href="/guides/ai-weekly-report-workflow.html">AI 周报自动化：从数据到汇报的 15 分钟流程</a></h3>
+  <p class="guide-card-result">产出：一份可直接发送的周报文档</p>
+  <p class="guide-card-desc">用 ChatGPT 分析本周数据、生成关键洞察，再输出为可直接发送的周报格式。</p>
+  <div class="guide-card-meta">
+    <span class="tag">chatgpt</span> <span class="tag">productivity</span>
+    <span>8 分钟</span>
+  </div>
+</article>
+    </div>
+    <div id="filter-empty-state" class="text-center mt-4" style="display: none;">
+      <p class="text-body">没有符合条件的方案。</p>
+    </div>
+  </div>
+</section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="navbar-logo mb-2">
+            <span class="navbar-logo-mark">IF</span>
+            <span>I.F. Labs</span>
+          </div>
+          <p class="text-small">有结论的 AI 效率实验室</p>
+          <p class="text-small" style="color: var(--color-text-muted); margin-top: 8px;">用真实测试和明确结论，帮你决定用哪款 AI 工具、怎么把它用好。</p>
+        </div>
+        <div>
+          <div class="footer-heading">内容</div>
+          <div class="footer-links">
+            <a href="/reviews">评测</a>
+            <a href="/guides">方案</a>
+            <a href="/packages">AI 速用包</a>
+            <a href="/market">方案集市</a>
+            <a href="/library">工具库</a>
+            <a href="/compare">对比</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">信息</div>
+          <div class="footer-links">
+            <a href="/about">关于我们</a>
+            <a href="/about#methodology">评测方法</a>
+            <a href="/about#criteria">评分标准</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">订阅</div>
+          <div class="footer-links">
+            <a href="/about#newsletter">每周雷达</a>
+            <a href="/search">搜索全站</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p class="text-mono" style="color: var(--color-text-muted);">© 2026 I.F. Labs. 保留所有权利。</p>
+        <div class="footer-social">
+          <a href="#">X</a>
+          <a href="#">Newsletter</a>
+          <a href="#">RSS</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/js/main.js?v=3"></script>
+</body>
+</html>
