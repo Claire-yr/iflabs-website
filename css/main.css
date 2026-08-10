@@ -533,6 +533,14 @@ button {
   font-size: 14px;
 }
 
+.navbar-logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
 .navbar-links {
   display: none;
   align-items: center;
