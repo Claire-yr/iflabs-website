@@ -1,0 +1,11 @@
+{
+  "buildCommand": "python generate.py",
+  "outputDirectory": "dist",
+  "installCommand": "",
+  "framework": null,
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  }
+}

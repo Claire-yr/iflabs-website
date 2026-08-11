@@ -29,17 +29,22 @@ def ensure_dirs():
     (OUTPUT_DIR / "about").mkdir(exist_ok=True)
     (OUTPUT_DIR / "search").mkdir(exist_ok=True)
     (OUTPUT_DIR / "data").mkdir(exist_ok=True)
+    (OUTPUT_DIR / "assets").mkdir(exist_ok=True)
 
 
 def copy_assets():
     src_css = ROOT / "css"
     src_js = ROOT / "js"
+    src_assets = ROOT / "assets"
     dst_css = OUTPUT_DIR / "css"
     dst_js = OUTPUT_DIR / "js"
+    dst_assets = OUTPUT_DIR / "assets"
     if src_css.exists():
         shutil.copytree(src_css, dst_css, dirs_exist_ok=True)
     if src_js.exists():
         shutil.copytree(src_js, dst_js, dirs_exist_ok=True)
+    if src_assets.exists():
+        shutil.copytree(src_assets, dst_assets, dirs_exist_ok=True)
 
 
 def nav_link(label, href, active_href, english="", status=""):
@@ -73,14 +78,14 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/main.css?v=3">
+  <link rel="stylesheet" href="/css/main.css?v=4">
 </head>
 <body>
   <div class="page">
     <header class="navbar">
       <div class="container navbar-inner">
         <a href="/" class="navbar-logo">
-          <span class="navbar-logo-mark">IF</span>
+          <img src="/assets/logo.jpg" alt="I.F. Labs" class="navbar-logo-img">
           <span>{site['name']}</span>
         </a>
         <nav class="navbar-links" aria-label="主导航">
@@ -108,7 +113,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
       <div class="container footer-grid">
         <div class="footer-brand">
           <div class="navbar-logo mb-2">
-            <span class="navbar-logo-mark">IF</span>
+            <img src="/assets/logo.jpg" alt="I.F. Labs" class="navbar-logo-img">
             <span>{site['name']}</span>
           </div>
           <p class="text-small">{site['tagline']}</p>
@@ -151,7 +156,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
       </div>
     </footer>
   </div>
-  <script src="/js/main.js?v=3"></script>
+  <script src="/js/main.js?v=4"></script>
 </body>
 </html>'''
 
@@ -282,18 +287,77 @@ def guide_card(guide):
 </article>'''
 
 
+def hero_3d_card(review, index, total):
+    badge = badge_class(review["recommendation"])
+    label = badge_label(review["recommendation"])
+    tags_html = " ".join(f'<span class="tag">{tag}</span>' for tag in review.get("tags", [])[:3])
+    return f'''<article class="hero-3d-card" data-hero-card-index="{index}">
+  <a href="/reviews/{review['id']}.html" class="hero-3d-card-link" aria-label="{review['title']}"></a>
+  <div class="hero-3d-card-header">
+    <span class="hero-3d-card-tool">{review['tool']} · {review['category']}</span>
+    <span class="badge {badge}">{label}</span>
+  </div>
+  <h3 class="hero-3d-card-title">{review['title']}</h3>
+  <p class="hero-3d-card-summary">{review['summary']}</p>
+  <div class="hero-3d-card-score">
+    {score_block_html(review['overallScore'], '综合评分')}
+  </div>
+  <div class="hero-3d-card-footer">
+    {tags_html}
+    <span class="tag">{review.get('readTime', '')}</span>
+  </div>
+</article>'''
+
+
+def wall_3d_card_review(review):
+    badge = badge_class(review["recommendation"])
+    label = badge_label(review["recommendation"])
+    return f'''<article class="wall-3d-card wall-3d-card-review">
+  <a href="/reviews/{review['id']}.html" class="wall-3d-card-link" aria-label="{review['title']}"></a>
+  <div class="wall-3d-card-header">
+    <span class="wall-3d-card-tool">{review['tool']} · {review['category']}</span>
+    <span class="badge {badge}">{label}</span>
+  </div>
+  <h3 class="wall-3d-card-title">{review['title']}</h3>
+  <p class="wall-3d-card-summary">{review['summary']}</p>
+  <div class="wall-3d-card-footer">
+    <span class="wall-3d-card-score"><strong>{review['overallScore']}</strong>/10</span>
+    <span class="tag">{review.get('readTime', '')}</span>
+  </div>
+</article>'''
+
+
+def wall_3d_card_guide(guide):
+    return f'''<article class="wall-3d-card wall-3d-card-guide">
+  <a href="/guides/{guide['id']}.html" class="wall-3d-card-link" aria-label="{guide['title']}"></a>
+  <div class="wall-3d-card-header">
+    <span class="wall-3d-card-tool">{guide['steps']} 步 · {guide.get('estimatedMinutes', 0)} 分钟</span>
+    <span class="badge badge-status">{guide.get('level', '')}</span>
+  </div>
+  <h3 class="wall-3d-card-title">{guide['title']}</h3>
+  <p class="wall-3d-card-summary">{guide['summary']}</p>
+  <div class="wall-3d-card-footer">
+    <span class="wall-3d-card-result">产出：{guide['result']}</span>
+    <span class="tag">{guide.get('readTime', '')}</span>
+  </div>
+</article>'''
+
+
 def render_home(content):
     site = content["site"]
     featured_review = next((r for r in content["reviews"] if r.get("featured")), content["reviews"][0])
-    recent_reviews = [r for r in content["reviews"] if r["id"] != featured_review["id"]][:2]
-    featured_guide = next((g for g in content["guides"] if g.get("featured")), content["guides"][0])
-    recent_guides = [g for g in content["guides"] if g["id"] != featured_guide["id"]][:2]
+    hero_reviews = [featured_review] + [r for r in content["reviews"] if r["id"] != featured_review["id"]][:4]
+    recent_reviews = content["reviews"][:6]
+    featured_guides = content["guides"][:6]
 
-    badge = badge_class(featured_review["recommendation"])
-    label = badge_label(featured_review["recommendation"])
+    hero_cards_html = "\n".join(hero_3d_card(r, i, len(hero_reviews)) for i, r in enumerate(hero_reviews))
+    hero_dots_html = "\n".join(f'<button type="button" class="hero-3d-dot{" active" if i == 0 else ""}" data-hero-dot="{i}" aria-label="切换到第 {i+1} 张卡片"></button>' for i in range(len(hero_reviews)))
 
-    reviews_html = "\n".join(review_card(r) for r in recent_reviews)
-    guides_html = "\n".join(guide_card(g) for g in recent_guides)
+    reviews_wall_html = "\n".join(wall_3d_card_review(r) for r in recent_reviews)
+    reviews_wall_html += "\n" + "\n".join(wall_3d_card_review(r) for r in recent_reviews)
+
+    guides_wall_html = "\n".join(wall_3d_card_guide(g) for g in featured_guides)
+    guides_wall_html += "\n" + "\n".join(wall_3d_card_guide(g) for g in featured_guides)
 
     body = f'''<section class="hero">
   <div class="container hero-grid">
@@ -306,20 +370,12 @@ def render_home(content):
         <a href="/guides" class="btn btn-secondary">查看方案</a>
       </div>
     </div>
-    <div class="featured-panel">
-      <div class="featured-panel-header">
-        <div>
-          <span class="review-card-tool">{featured_review['tool']} · {featured_review['category']}</span>
-          <h2 class="featured-panel-title"><a href="/reviews/{featured_review['id']}.html">{featured_review['title']}</a></h2>
-        </div>
-        <div class="featured-panel-score">
-          {score_block_html(featured_review['overallScore'], '综合评分')}
-        </div>
+    <div class="hero-3d-carousel" id="hero-3d-carousel">
+      <div class="hero-3d-stage" id="hero-3d-stage" style="--count:{len(hero_reviews)};">
+        {hero_cards_html}
       </div>
-      <div class="featured-panel-conclusion">{badge_label(featured_review['recommendation'])}：{featured_review['summary']}</div>
-      <div class="metadata-row">
-        <span>测试于 {featured_review['testedAt']}</span>
-        <span>{featured_review.get('readTime', '')}</span>
+      <div class="hero-3d-dots">
+        {hero_dots_html}
       </div>
     </div>
   </div>
@@ -346,32 +402,40 @@ def render_home(content):
   </div>
 </section>
 
-<section class="section">
+<section class="section wall-3d-section" id="reviews-wall-section">
   <div class="container">
     <div class="content-narrow mb-4">
       <p class="section-label mb-2">最新评测</p>
       <h2 class="text-h1">哪款 AI 工具值得你用？</h2>
       <p class="text-body" style="color: var(--color-text-secondary);">我们不罗列功能，只回答一个问题：在真实工作场景里，它靠不靠谱。</p>
     </div>
-    <div class="content-grid content-grid-3">
-      {reviews_html}
+  </div>
+  <div class="wall-3d-viewport wall-3d-viewport-reviews">
+    <div class="wall-3d-track" data-wall="reviews">
+      {reviews_wall_html}
     </div>
+  </div>
+  <div class="container">
     <div class="text-center mt-4">
       <a href="/reviews" class="btn btn-secondary">查看全部评测</a>
     </div>
   </div>
 </section>
 
-<section class="section" style="background-color: var(--color-paper-dark);">
+<section class="section wall-3d-section" style="background-color: var(--color-paper-dark);" id="guides-wall-section">
   <div class="container">
     <div class="content-narrow mb-4">
       <p class="section-label mb-2">精选方案</p>
       <h2 class="text-h1">把工具变成工作流</h2>
       <p class="text-body" style="color: var(--color-text-secondary);">不是教你提问，而是给你能直接跑起来的步骤、模板和检查清单。</p>
     </div>
-    <div class="content-grid content-grid-3">
-      {guides_html}
+  </div>
+  <div class="wall-3d-viewport wall-3d-viewport-guides">
+    <div class="wall-3d-track" data-wall="guides" data-direction="reverse">
+      {guides_wall_html}
     </div>
+  </div>
+  <div class="container">
     <div class="text-center mt-4">
       <a href="/guides" class="btn btn-secondary">查看全部方案</a>
     </div>

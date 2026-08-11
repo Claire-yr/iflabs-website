@@ -17,5 +17,7 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Build artifacts (keep dist for static deployment)
-# dist/
+# Build artifacts (Cloudflare Pages builds dist automatically)
+dist/
+
+.vercel

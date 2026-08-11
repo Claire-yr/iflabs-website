@@ -335,4 +335,100 @@
 
   makeCardClickable('.package-card', '.package-card-title a');
   makeCardClickable('.market-card', '.market-card-title a');
+
+  // Hero carousel auto-rotation (smooth slide/fade)
+  (function initHeroCarousel() {
+    const stage = document.getElementById('hero-3d-stage');
+    const carousel = document.getElementById('hero-3d-carousel');
+    if (!stage || !carousel) return;
+
+    const cards = Array.from(stage.children).filter(function (el) {
+      return el.classList.contains('hero-3d-card');
+    });
+    const count = cards.length;
+    if (count <= 1) return;
+
+    let current = 0;
+    let interval;
+    const delay = 5000;
+
+    function updateCards() {
+      cards.forEach(function (card, i) {
+        card.classList.remove('active', 'prev');
+        if (i === current) {
+          card.classList.add('active');
+        } else if (i === (current - 1 + count) % count) {
+          card.classList.add('prev');
+        }
+      });
+      document.querySelectorAll('.hero-3d-dot').forEach(function (dot, i) {
+        dot.classList.toggle('active', i === current);
+      });
+    }
+
+    function rotateTo(index) {
+      current = index;
+      updateCards();
+    }
+
+    function next() {
+      rotateTo((current + 1) % count);
+    }
+
+    function start() {
+      interval = setInterval(next, delay);
+    }
+
+    function stop() {
+      clearInterval(interval);
+    }
+
+    updateCards();
+    start();
+
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    carousel.addEventListener('focusin', stop);
+    carousel.addEventListener('focusout', start);
+
+    document.querySelectorAll('.hero-3d-dot').forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        rotateTo(parseInt(dot.dataset.heroDot, 10));
+        stop();
+        start();
+      });
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    carousel.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      stop();
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', function (e) {
+      const touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 40) {
+        next();
+      } else if (touchEndX > touchStartX + 40) {
+        rotateTo((current - 1 + count) % count);
+      }
+      start();
+    }, { passive: true });
+  })();
+
+  // 3D wall hover lift on non-touch devices
+  (function initWall3DHover() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    document.querySelectorAll('.wall-3d-card').forEach(function (card) {
+      card.addEventListener('mouseenter', function () {
+        card.style.zIndex = '10';
+      });
+      card.addEventListener('mouseleave', function () {
+        setTimeout(function () {
+          card.style.zIndex = '';
+        }, 450);
+      });
+    });
+  })();
 })();
