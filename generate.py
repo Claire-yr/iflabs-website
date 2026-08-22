@@ -156,7 +156,35 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
       </div>
     </footer>
   </div>
-  <script src="/js/main.js?v=5"></script>
+
+  <button type="button" class="ifer-chat-bubble" id="ifer-chat-bubble" aria-label="与艾弗对话" aria-expanded="false">
+    <img src="/assets/ifer/ifer-avatar-minimal.png" alt="" class="ifer-chat-bubble-avatar">
+    <span class="ifer-chat-bubble-pulse" aria-hidden="true"></span>
+  </button>
+
+  <div class="ifer-chat-panel" id="ifer-chat-panel" hidden role="dialog" aria-label="艾弗 Ifer 对话窗口">
+    <div class="ifer-chat-header">
+      <div class="ifer-chat-header-left">
+        <img src="/assets/ifer/ifer-avatar-minimal.png" alt="" class="ifer-chat-avatar">
+        <div>
+          <div class="ifer-chat-name">艾弗 Ifer <span class="ifer-chat-status-dot" aria-label="在线"></span></div>
+          <div class="ifer-chat-sub">基于 I.F. Labs 知识库</div>
+        </div>
+      </div>
+      <button type="button" class="ifer-chat-close" aria-label="关闭对话" data-ifer-close>×</button>
+    </div>
+    <div class="ifer-chat-messages" id="ifer-chat-messages" aria-live="polite"></div>
+    <div class="ifer-chat-quick" id="ifer-chat-quick"></div>
+    <form class="ifer-chat-input-wrap" id="ifer-chat-form">
+      <input type="text" class="ifer-chat-input" id="ifer-chat-input" placeholder="问艾弗：哪个 AI 工具适合我？" autocomplete="off" maxlength="500">
+      <button type="submit" class="ifer-chat-send" aria-label="发送">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </form>
+    <div class="ifer-chat-footer">基于 I.F. Labs 知识库 · 结论前置 · —— 艾弗 Ifer</div>
+  </div>
+
+  <script src="/js/main.js?v=6"></script>
 </body>
 </html>'''
 
@@ -376,6 +404,27 @@ def render_home(content):
       </div>
       <div class="hero-3d-dots">
         {hero_dots_html}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ifer-intro-section" id="ifer-intro">
+  <div class="container ifer-intro-grid">
+    <div class="ifer-video-frame">
+      <video class="ifer-video" autoplay loop muted playsinline preload="metadata" aria-label="艾弗 Ifer 动态形象">
+        <source src="/assets/ifer/ifer-3d.mp4" type="video/mp4">
+      </video>
+      <span class="ifer-video-pulse" aria-hidden="true"></span>
+    </div>
+    <div class="ifer-intro-info">
+      <span class="ifer-kicker">YOUR AI AGENT COMPANION</span>
+      <h2 class="ifer-name">艾弗 <span class="ifer-name-en">Ifer</span></h2>
+      <p class="ifer-role">AI 智能体伙伴</p>
+      <p class="ifer-desc">基于 I.F. Labs 真实测试知识库，直接给结论：哪个工具值得用、怎么搭工作流、Prompt 怎么写。不啰嗦，不模糊。</p>
+      <div class="ifer-cta-row">
+        <button type="button" class="btn btn-primary" data-ifer-open>与艾弗对话</button>
+        <span class="ifer-cta-hint">基于 I.F. Labs 知识库 · 免费</span>
       </div>
     </div>
   </div>

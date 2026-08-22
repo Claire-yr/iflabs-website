@@ -431,4 +431,254 @@
       });
     });
   })();
+
+  // ===== I.F. Labs · 艾弗 Ifer 浮动对话 =====
+  (function initIferChat() {
+    const bubble = document.getElementById('ifer-chat-bubble');
+    const panel = document.getElementById('ifer-chat-panel');
+    const messagesEl = document.getElementById('ifer-chat-messages');
+    const quickEl = document.getElementById('ifer-chat-quick');
+    const form = document.getElementById('ifer-chat-form');
+    const input = document.getElementById('ifer-chat-input');
+    if (!bubble || !panel || !messagesEl || !form || !input) return;
+
+    const state = { open: false, greeted: false, busy: false };
+
+    const QUICK = [
+      '推荐一个写作 AI',
+      'AI 速用包是什么？',
+      '给我一个 Prompt 模板',
+      '如何选 AI 工具？'
+    ];
+
+    const TOOLS = [
+      { name: 'ChatGPT', cat: '通用对话', score: 8.6, tag: '推荐', note: '通用问答与起草首选，生态最全' },
+      { name: 'Claude', cat: '长文 / 推理', score: 9.0, tag: '强推', note: '长文档理解与结构化输出能力强' },
+      { name: 'Cursor', cat: 'AI IDE', score: 8.8, tag: '推荐', note: 'AI 编程编辑器首选，工程效率显著' },
+      { name: 'Perplexity', cat: '联网搜索', score: 8.4, tag: '推荐', note: '需要实时信息 / 资料检索时用' },
+      { name: 'Midjourney', cat: '图像生成', score: 8.7, tag: '推荐', note: '视觉质量与风格控制最强' },
+      { name: 'Notion AI', cat: '文档协作', score: 7.8, tag: '视条件', note: '已在 Notion 体系内可启用，否则不必' },
+      { name: 'v0', cat: 'UI 生成', score: 8.2, tag: '推荐', note: '快速产出前端代码 / 设计稿' },
+      { name: 'Gamma', cat: 'PPT 生成', score: 7.9, tag: '视条件', note: '快速搭建演示稿骨架，细节需手工' }
+    ];
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function renderMarkdownLite(text) {
+      // Convert simple markdown to HTML: **bold**, `code`, newlines
+      let html = escapeHtml(text);
+      html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+      html = html.replace(/\n/g, '<br>');
+      return html;
+    }
+
+    function appendMessage(role, content, opts) {
+      opts = opts || {};
+      const wrap = document.createElement('div');
+      wrap.className = 'ifer-chat-msg ifer-chat-msg-' + role;
+
+      if (role === 'bot') {
+        const av = document.createElement('img');
+        av.className = 'ifer-chat-msg-avatar';
+        av.src = '/assets/ifer/ifer-avatar-minimal.png';
+        av.alt = '艾弗';
+        wrap.appendChild(av);
+      }
+
+      const bubble = document.createElement('div');
+      bubble.className = 'ifer-chat-msg-bubble';
+
+      if (opts.html) {
+        bubble.innerHTML = content;
+      } else {
+        bubble.innerHTML = renderMarkdownLite(content);
+      }
+      wrap.appendChild(bubble);
+
+      if (role === 'user') {
+        const av = document.createElement('img');
+        av.className = 'ifer-chat-msg-avatar';
+        av.src = '/assets/logo.jpg';
+        av.alt = '我';
+        wrap.appendChild(av);
+      }
+
+      messagesEl.appendChild(wrap);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return wrap;
+    }
+
+    function showTyping() {
+      const wrap = document.createElement('div');
+      wrap.className = 'ifer-chat-msg ifer-chat-msg-bot ifer-chat-typing-wrap';
+      const av = document.createElement('img');
+      av.className = 'ifer-chat-msg-avatar';
+      av.src = '/assets/ifer/ifer-avatar-minimal.png';
+      av.alt = '';
+      wrap.appendChild(av);
+      const b = document.createElement('div');
+      b.className = 'ifer-chat-msg-bubble';
+      b.innerHTML = '<span class="ifer-chat-typing"><span></span><span></span><span></span></span>';
+      wrap.appendChild(b);
+      messagesEl.appendChild(wrap);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return wrap;
+    }
+
+    function renderToolTable(matches) {
+      const rows = matches.map(function (t) {
+        return '<tr><td><strong>' + escapeHtml(t.name) + '</strong></td><td>' + escapeHtml(t.cat) + '</td><td>' + t.score.toFixed(1) + '</td><td>' + escapeHtml(t.tag) + '</td><td>' + escapeHtml(t.note) + '</td></tr>';
+      }).join('');
+      const html = '推荐结论：以下工具按场景匹配，按站内评分排序。<br><br>' +
+        '<table class="ifer-chat-msg-table"><thead><tr><th>工具</th><th>类别</th><th>评分</th><th>结论</th><th>适用场景</th></tr></thead><tbody>' +
+        rows + '</tbody></table><br>—— 艾弗 Ifer';
+      return html;
+    }
+
+    function classifyIntent(text) {
+      const t = text.toLowerCase();
+      if (/prompt|提示词/.test(t)) return 'prompt';
+      if (/速用包|方案集市|套餐|订阅/.test(t)) return 'package';
+      if (/评测|测评|打分|评分|对比|比较/.test(t)) return 'review';
+      if (/怎么选|如何选|选什么|推荐|哪个|建议|用哪款/.test(t)) return 'recommend';
+      if (/写作|文案|起草|文章|周报/.test(t)) return { cat: '写作' };
+      if (/编程|写代码|cursor|代码|开发/.test(t)) return { cat: 'AI IDE' };
+      if (/ppt|演示|幻灯片|汇报/.test(t)) return { cat: 'PPT 生成' };
+      if (/搜索|查资料|联网|资料/.test(t)) return { cat: '联网搜索' };
+      if (/画图|配图|海报|插画|设计/.test(t)) return { cat: '图像生成' };
+      if (/长文|长文档|合同|论文|报告/.test(t)) return { cat: '长文 / 推理' };
+      if (/文档|笔记|知识库/.test(t)) return { cat: '文档协作' };
+      if (/ui|前端|网页|界面/.test(t)) return { cat: 'UI 生成' };
+      return null;
+    }
+
+    function buildResponse(userText) {
+      const intent = classifyIntent(userText);
+
+      if (intent === 'prompt') {
+        return '**结论前置**：给你一个可直接复用的万能 Prompt 模板，覆盖角色 / 上下文 / 任务 / 约束 / 输出格式五段。<br><br>' +
+          '```\n你是 [角色]，擅长 [领域]。\n背景：[上下文与目标]\n任务：[请你做什么]\n约束：[限制条件，如字数、风格、禁用词]\n输出格式：[表格 / 编号 / Markdown / JSON]\n```<br><br>' +
+          '把方括号里的内容换成你的具体场景即可。需我帮你把当前需求套进这个模板吗？<br>—— 艾弗 Ifer';
+      }
+
+      if (intent === 'package') {
+        return '**结论前置**：AI 速用包是 I.F. Labs 把"工具组合 + 工作流 + 检查清单"做成可直接落地的成品包，比单条评测更省事。<br><br>' +
+          '<strong>两类包</strong>：<br>' +
+          '• <strong>官方速用包</strong>：评测验证过的工具组合，含执行步骤与风险提示<br>' +
+          '• <strong>社区方案</strong>：用户自提交的真实案例，按场景分类<br><br>' +
+          '入口：顶部导航「AI 速用包」或「方案集市」。<br>—— 艾弗 Ifer';
+      }
+
+      if (intent === 'review') {
+        const top = TOOLS.slice().sort(function (a, b) { return b.score - a.score; }).slice(0, 4);
+        return '**结论前置**：I.F. Labs 站内评分 ≥ 8.5 的 的 4 款工具，按场景匹配选你需要的：<br><br>' + renderToolTable(top);
+      }
+
+      if (intent === 'recommend' || (intent && intent.cat)) {
+        const cat = intent && intent.cat ? intent.cat : null;
+        let matches = TOOLS;
+        if (cat) matches = TOOLS.filter(function (t) { return t.cat === cat; });
+        if (matches.length === 0) {
+          // 没有精确匹配则推荐综合最强的 3 款
+          matches = TOOLS.slice().sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
+          return '**结论前置**：未识别到精确场景，按综合评分推荐前三：<br><br>' + renderToolTable(matches);
+        }
+        return '**结论前置**：按你提到的场景（' + escapeHtml(cat) + '），匹配如下：<br><br>' + renderToolTable(matches);
+      }
+
+      // 默认回复：解释艾弗是谁 + 反问锁定场景
+      return '**结论前置**：我是艾弗，I.F. Labs 的 AI 智能体伙伴，专注 AI 工具选型、工作流方案与 Prompt 生成。<br><br>' +
+        '<strong>我能帮你做的</strong>：<br>' +
+        '1. 推荐适合你场景的 AI 工具（按站内测评打分）<br>' +
+        '2. 拆解工作流，给可执行步骤与产出模板<br>' +
+        '3. 生成可直接粘贴的 Prompt<br><br>' +
+        '为了更精准回答，告诉我 ① 你要做什么 ② 当前在用什么工具。<br>—— 艾弗 Ifer';
+    }
+
+    function openChat() {
+      if (state.open) return;
+      state.open = true;
+      panel.hidden = false;
+      bubble.classList.add('is-open');
+      bubble.setAttribute('aria-expanded', 'true');
+      if (!state.greeted) {
+        state.greeted = true;
+        setTimeout(function () {
+          appendMessage('bot', '我是艾弗，I.F. Labs 的 AI 智能体伙伴。\n\n告诉我你要解决什么问题，我给你结构化方案。', { html: false });
+          renderQuick();
+        }, 120);
+      } else {
+        renderQuick();
+      }
+      setTimeout(function () { input.focus(); }, 200);
+    }
+
+    function closeChat() {
+      state.open = false;
+      panel.hidden = true;
+      bubble.classList.remove('is-open');
+      bubble.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleChat() {
+      if (state.open) closeChat();
+      else openChat();
+    }
+
+    function renderQuick() {
+      quickEl.innerHTML = '';
+      QUICK.forEach(function (q) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'ifer-chat-quick-btn';
+        b.textContent = q;
+        b.addEventListener('click', function () { handleSend(q); });
+        quickEl.appendChild(b);
+      });
+    }
+
+    function handleSend(text) {
+      const value = (text != null ? text : input.value).trim();
+      if (!value || state.busy) return;
+      input.value = '';
+      appendMessage('user', value, { html: false });
+      state.busy = true;
+      const typing = showTyping();
+      // simulate thinking
+      const delay = 600 + Math.min(1200, value.length * 12);
+      setTimeout(function () {
+        typing.remove();
+        const html = buildResponse(value);
+        appendMessage('bot', html, { html: true });
+        state.busy = false;
+      }, delay);
+    }
+
+    bubble.addEventListener('click', toggleChat);
+    document.querySelectorAll('[data-ifer-open]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openChat();
+      });
+    });
+    const closeBtn = panel.querySelector('[data-ifer-close]');
+    if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      handleSend();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && state.open) closeChat();
+    });
+  })();
 })();
