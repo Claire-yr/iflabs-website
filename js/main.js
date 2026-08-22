@@ -547,60 +547,100 @@
       const t = text.toLowerCase();
       if (/prompt|提示词/.test(t)) return 'prompt';
       if (/速用包|方案集市|套餐|订阅/.test(t)) return 'package';
-      if (/评测|测评|打分|评分|对比|比较/.test(t)) return 'review';
-      if (/怎么选|如何选|选什么|推荐|哪个|建议|用哪款/.test(t)) return 'recommend';
-      if (/写作|文案|起草|文章|周报/.test(t)) return { cat: '写作' };
-      if (/编程|写代码|cursor|代码|开发/.test(t)) return { cat: 'AI IDE' };
-      if (/ppt|演示|幻灯片|汇报/.test(t)) return { cat: 'PPT 生成' };
-      if (/搜索|查资料|联网|资料/.test(t)) return { cat: '联网搜索' };
-      if (/画图|配图|海报|插画|设计/.test(t)) return { cat: '图像生成' };
-      if (/长文|长文档|合同|论文|报告/.test(t)) return { cat: '长文 / 推理' };
-      if (/文档|笔记|知识库/.test(t)) return { cat: '文档协作' };
-      if (/ui|前端|网页|界面/.test(t)) return { cat: 'UI 生成' };
+      if (/你好|你是谁|hi|hello|嗨/.test(t)) return 'greet';
+      if (/评测|测评|打分|评分|对比|比较|排行/.test(t)) return 'review';
+      if (/prompt|提示词|怎么写|模板/.test(t)) return 'prompt';
+      const cats = [
+        { key: '写作', re: /写作|文案|起草|文章|周报|公众号|小红书|朋友圈|邮件|润色/ },
+        { key: 'AI IDE', re: /编程|写代码|cursor|代码|开发|debug|重构|单元测试/ },
+        { key: 'PPT 生成', re: /ppt|演示|幻灯片|汇报|路演/ },
+        { key: '联网搜索', re: /搜索|查资料|联网|资料|新闻|实时/ },
+        { key: '图像生成', re: /画图|配图|海报|插画|设计|头像|logo/ },
+        { key: '长文 / 推理', re: /长文|长文档|合同|论文|报告|分析|推理|总结/ },
+        { key: '文档协作', re: /文档|笔记|知识库|notion/ },
+        { key: 'UI 生成', re: /ui|前端|网页|界面|layout|原型/ }
+      ];
+      for (const c of cats) if (c.re.test(t)) return { cat: c.key };
+      // 通用"推荐/选什么"——无特定场景
+      if (/怎么选|如何选|选什么|推荐|哪个|建议|用哪款|有什么/.test(t)) return 'recommend';
       return null;
+    }
+
+    function toolPickReason(tool, cat) {
+      // 给每款工具配一句"为什么选它"的人话解释，避免纯表格
+      const map = {
+        'ChatGPT': '通用问答与起草首选，插件与生态最全，几乎所有场景的兜底选项。',
+        'Claude': '长文档理解、结构化输出、复杂推理的天花板，写方案与做分析的利器。',
+        'Cursor': 'AI 编程 IDE，能直接改你工程里的代码，比聊天窗口强一个量级。',
+        'Perplexity': '带联网 + 引用的搜索，回答有出处，适合做资料调研。',
+        'Midjourney': '图像生成视觉质量与风格控制最强，设计师首选。',
+        'Notion AI': '已在 Notion 体系内可顺手启用，否则不必专门订阅。',
+        'v0': '前端 / UI 代码生成最快，描述需求直接出可跑的 React 组件。',
+        'Gamma': '快速搭演示稿骨架，但细节文案需自己再调一遍。'
+      };
+      return map[tool.name] || tool.note;
     }
 
     function buildResponse(userText) {
       const intent = classifyIntent(userText);
 
+      if (intent === 'greet') {
+        return '我是艾弗，I.F. Labs 的 AI 智能体伙伴。\n\n我能帮你做三件事：选 AI 工具、拆工作流、生成 Prompt。\n\n直接说你的任务就行，比如"我想写一份项目周报"或"我想做个海报"。';
+      }
+
       if (intent === 'prompt') {
-        return '**结论前置**：给你一个可直接复用的万能 Prompt 模板，覆盖角色 / 上下文 / 任务 / 约束 / 输出格式五段。<br><br>' +
-          '```\n你是 [角色]，擅长 [领域]。\n背景：[上下文与目标]\n任务：[请你做什么]\n约束：[限制条件，如字数、风格、禁用词]\n输出格式：[表格 / 编号 / Markdown / JSON]\n```<br><br>' +
-          '把方括号里的内容换成你的具体场景即可。需我帮你把当前需求套进这个模板吗？<br>—— 艾弗 Ifer';
+        return '给你一个五段式万能 Prompt 模板，把方括号里的内容换成你的场景就能直接用：\n\n' +
+          '```\n你是 [角色]，擅长 [领域]。\n背景：[上下文与目标读者]\n任务：[请你做什么，按编号列]\n约束：[字数、风格、禁用词、必须包含的要素]\n输出格式：[表格 / 编号 / Markdown / JSON]\n```\n\n要我帮你把现在这个需求套进这个模板吗？';
       }
 
       if (intent === 'package') {
-        return '**结论前置**：AI 速用包是 I.F. Labs 把"工具组合 + 工作流 + 检查清单"做成可直接落地的成品包，比单条评测更省事。<br><br>' +
-          '<strong>两类包</strong>：<br>' +
-          '• <strong>官方速用包</strong>：评测验证过的工具组合，含执行步骤与风险提示<br>' +
-          '• <strong>社区方案</strong>：用户自提交的真实案例，按场景分类<br><br>' +
-          '入口：顶部导航「AI 速用包」或「方案集市」。<br>—— 艾弗 Ifer';
+        return 'AI 速用包是 I.F. Labs 把"工具组合 + 工作流 + 检查清单"打包好的成品，比单条评测省事。\n\n' +
+          '站内分两类：\n' +
+          '• 官方速用包：评测验证过的工具组合，含执行步骤与风险提示\n' +
+          '• 社区方案：用户提交的真实案例，按场景分类\n\n' +
+          '入口在顶部导航「AI 速用包」和「方案集市」。';
       }
 
       if (intent === 'review') {
-        const top = TOOLS.slice().sort(function (a, b) { return b.score - a.score; }).slice(0, 4);
-        return '**结论前置**：I.F. Labs 站内评分 ≥ 8.5 的 的 4 款工具，按场景匹配选你需要的：<br><br>' + renderToolTable(top);
+        const top = TOOLS.slice().sort((a, b) => b.score - a.score).slice(0, 4);
+        const head = 'I.F. Labs 站内评分最高的 4 款工具，按你的场景挑：';
+        return head + '<br><br>' + renderToolTable(top);
       }
 
-      if (intent === 'recommend' || (intent && intent.cat)) {
-        const cat = intent && intent.cat ? intent.cat : null;
-        let matches = TOOLS;
-        if (cat) matches = TOOLS.filter(function (t) { return t.cat === cat; });
+      if (intent === 'recommend') {
+        // 没有明确场景——反问锁定，而不是硬塞
+        return '想给你更对得上的推荐，先确认两件事：\n\n' +
+          '1. 你主要用 AI 做什么？（写作 / 编程 / 出图 / 查资料 / 做 PPT / 其他）\n' +
+          '2. 现在已经在用什么工具，遇到什么卡点？\n\n' +
+          '回答这两个我就给你具体推荐。';
+      }
+
+      if (intent && intent.cat) {
+        const cat = intent.cat;
+        let matches = TOOLS.filter(t => t.cat === cat);
         if (matches.length === 0) {
-          // 没有精确匹配则推荐综合最强的 3 款
-          matches = TOOLS.slice().sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
-          return '**结论前置**：未识别到精确场景，按综合评分推荐前三：<br><br>' + renderToolTable(matches);
+          matches = TOOLS.slice().sort((a, b) => b.score - a.score).slice(0, 3);
+          const head = `没在站内找到"${cat}"的精确匹配，按综合评分给你前三：`;
+          return head + '<br><br>' + renderToolTable(matches);
         }
-        return '**结论前置**：按你提到的场景（' + escapeHtml(cat) + '），匹配如下：<br><br>' + renderToolTable(matches);
+        // 有匹配——先说一句推荐 + 一句理由，再上表
+        const top = matches.sort((a, b) => b.score - a.score)[0];
+        const intro = `做${cat}首推 <strong>${top.name}</strong>。${toolPickReason(top, cat)}`;
+        const rest = matches.length > 1 ? '<br><br>同场景备选：' : '';
+        const restRows = matches.length > 1
+          ? '<table class="ifer-chat-msg-table"><thead><tr><th>工具</th><th>评分</th><th>适用</th></tr></thead><tbody>' +
+            matches.map(t => `<tr><td>${escapeHtml(t.name)}</td><td>${t.score.toFixed(1)}</td><td>${escapeHtml(toolPickReason(t, cat))}</td></tr>`).join('') +
+            '</tbody></table>'
+          : '';
+        return intro + rest + restRows;
       }
 
-      // 默认回复：解释艾弗是谁 + 反问锁定场景
-      return '**结论前置**：我是艾弗，I.F. Labs 的 AI 智能体伙伴，专注 AI 工具选型、工作流方案与 Prompt 生成。<br><br>' +
-        '<strong>我能帮你做的</strong>：<br>' +
-        '1. 推荐适合你场景的 AI 工具（按站内测评打分）<br>' +
-        '2. 拆解工作流，给可执行步骤与产出模板<br>' +
-        '3. 生成可直接粘贴的 Prompt<br><br>' +
-        '为了更精准回答，告诉我 ① 你要做什么 ② 当前在用什么工具。<br>—— 艾弗 Ifer';
+      // 默认：自我介绍 + 反问
+      return '我是艾弗，I.F. Labs 的 AI 智能体伙伴，专注 AI 工具选型、工作流方案与 Prompt 生成。\n\n' +
+        '告诉我：\n' +
+        '① 你要做什么\n' +
+        '② 当前在用什么工具、卡在哪\n\n' +
+        '我直接给你结构化方案。';
     }
 
     function openChat() {
