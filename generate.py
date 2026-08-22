@@ -78,7 +78,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/main.css?v=4">
+  <link rel="stylesheet" href="/css/main.css?v=5">
 </head>
 <body>
   <div class="page">
@@ -156,7 +156,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
       </div>
     </footer>
   </div>
-  <script src="/js/main.js?v=4"></script>
+  <script src="/js/main.js?v=5"></script>
 </body>
 </html>'''
 
@@ -404,9 +404,9 @@ def render_home(content):
 
 <section class="section wall-3d-section" id="reviews-wall-section">
   <div class="container">
-    <div class="content-narrow mb-4">
-      <p class="section-label mb-2">最新评测</p>
-      <h2 class="text-h1">哪款 AI 工具值得你用？</h2>
+    <div class="content-narrow content-narrow-left mb-4">
+      <p class="section-title-lg mb-2">最新评测</p>
+      <h2 class="text-h3" style="margin-top: 0;">哪款 AI 工具值得你用？</h2>
       <p class="text-body" style="color: var(--color-text-secondary);">我们不罗列功能，只回答一个问题：在真实工作场景里，它靠不靠谱。</p>
     </div>
   </div>
@@ -424,9 +424,9 @@ def render_home(content):
 
 <section class="section wall-3d-section" style="background-color: var(--color-paper-dark);" id="guides-wall-section">
   <div class="container">
-    <div class="content-narrow mb-4">
-      <p class="section-label mb-2">精选方案</p>
-      <h2 class="text-h1">把工具变成工作流</h2>
+    <div class="content-narrow content-narrow-left mb-4">
+      <p class="section-title-lg mb-2">精选方案</p>
+      <h2 class="text-h3" style="margin-top: 0;">把工具变成工作流</h2>
       <p class="text-body" style="color: var(--color-text-secondary);">不是教你提问，而是给你能直接跑起来的步骤、模板和检查清单。</p>
     </div>
   </div>
