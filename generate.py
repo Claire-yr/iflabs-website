@@ -407,7 +407,6 @@ def render_home(content):
     <div class="content-narrow content-narrow-left mb-4">
       <p class="section-title-lg mb-2">最新评测</p>
       <h2 class="text-h3" style="margin-top: 0;">哪款 AI 工具值得你用？</h2>
-      <p class="text-body" style="color: var(--color-text-secondary);">我们不罗列功能，只回答一个问题：在真实工作场景里，它靠不靠谱。</p>
     </div>
   </div>
   <div class="wall-3d-viewport wall-3d-viewport-reviews">
@@ -427,7 +426,6 @@ def render_home(content):
     <div class="content-narrow content-narrow-left mb-4">
       <p class="section-title-lg mb-2">精选方案</p>
       <h2 class="text-h3" style="margin-top: 0;">把工具变成工作流</h2>
-      <p class="text-body" style="color: var(--color-text-secondary);">不是教你提问，而是给你能直接跑起来的步骤、模板和检查清单。</p>
     </div>
   </div>
   <div class="wall-3d-viewport wall-3d-viewport-guides">
