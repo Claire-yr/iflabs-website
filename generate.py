@@ -157,10 +157,16 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
     </footer>
   </div>
 
-  <button type="button" class="ifer-chat-bubble" id="ifer-chat-bubble" aria-label="与艾弗对话" aria-expanded="false">
-    <img src="/assets/ifer/ifer-avatar-minimal.png" alt="" class="ifer-chat-bubble-avatar">
-    <span class="ifer-chat-bubble-pulse" aria-hidden="true"></span>
-  </button>
+  <div class="ifer-character" id="ifer-character" role="button" tabindex="0" aria-label="与艾弗对话" aria-expanded="false" data-state="idle">
+    <span class="ifer-character-sparkles" aria-hidden="true">
+      <span class="ifer-sparkle s1"></span>
+      <span class="ifer-sparkle s2"></span>
+      <span class="ifer-sparkle s3"></span>
+    </span>
+    <img src="/assets/ifer/ifer-peek.png" alt="艾弗 Ifer" class="ifer-character-img ifer-character-img-idle">
+    <img src="/assets/ifer/ifer-thinking.png" alt="" class="ifer-character-img ifer-character-img-thinking">
+    <span class="ifer-character-shadow" aria-hidden="true"></span>
+  </div>
 
   <div class="ifer-chat-panel" id="ifer-chat-panel" hidden role="dialog" aria-label="艾弗 Ifer 对话窗口">
     <div class="ifer-chat-header">
@@ -184,7 +190,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
     <div class="ifer-chat-footer">基于 I.F. Labs 知识库 · 结论前置 · —— 艾弗 Ifer</div>
   </div>
 
-  <script src="/js/main.js?v=6"></script>
+  <script src="/js/main.js?v=7"></script>
 </body>
 </html>'''
 

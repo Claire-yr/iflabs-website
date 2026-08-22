@@ -432,15 +432,15 @@
     });
   })();
 
-  // ===== I.F. Labs · 艾弗 Ifer 浮动对话 =====
+  // ===== I.F. Labs · 艾弗 Ifer 探出实体 + 浮动对话 =====
   (function initIferChat() {
-    const bubble = document.getElementById('ifer-chat-bubble');
+    const character = document.getElementById('ifer-character');
     const panel = document.getElementById('ifer-chat-panel');
     const messagesEl = document.getElementById('ifer-chat-messages');
     const quickEl = document.getElementById('ifer-chat-quick');
     const form = document.getElementById('ifer-chat-form');
     const input = document.getElementById('ifer-chat-input');
-    if (!bubble || !panel || !messagesEl || !form || !input) return;
+    if (!character || !panel || !messagesEl || !form || !input) return;
 
     const state = { open: false, greeted: false, busy: false };
 
@@ -647,30 +647,35 @@
       if (state.open) return;
       state.open = true;
       panel.hidden = false;
-      bubble.classList.add('is-open');
-      bubble.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('ifer-chat-open');
+      character.setAttribute('aria-expanded', 'true');
       if (!state.greeted) {
         state.greeted = true;
         setTimeout(function () {
           appendMessage('bot', '我是艾弗，I.F. Labs 的 AI 智能体伙伴。\n\n告诉我你要解决什么问题，我给你结构化方案。', { html: false });
           renderQuick();
-        }, 120);
+        }, 220);
       } else {
         renderQuick();
       }
-      setTimeout(function () { input.focus(); }, 200);
+      setTimeout(function () { input.focus(); }, 320);
     }
 
     function closeChat() {
       state.open = false;
       panel.hidden = true;
-      bubble.classList.remove('is-open');
-      bubble.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('ifer-chat-open');
+      character.setAttribute('aria-expanded', 'false');
+      setCharacterState('idle');
     }
 
     function toggleChat() {
       if (state.open) closeChat();
       else openChat();
+    }
+
+    function setCharacterState(s) {
+      character.dataset.state = s;
     }
 
     function renderQuick() {
@@ -691,6 +696,7 @@
       input.value = '';
       appendMessage('user', value, { html: false });
       state.busy = true;
+      setCharacterState('thinking');
       const typing = showTyping();
       // simulate thinking
       const delay = 600 + Math.min(1200, value.length * 12);
@@ -699,10 +705,17 @@
         const html = buildResponse(value);
         appendMessage('bot', html, { html: true });
         state.busy = false;
+        setCharacterState('idle');
       }, delay);
     }
 
-    bubble.addEventListener('click', toggleChat);
+    character.addEventListener('click', toggleChat);
+    character.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleChat();
+      }
+    });
     document.querySelectorAll('[data-ifer-open]').forEach(function (el) {
       el.addEventListener('click', function (e) {
         e.preventDefault();
