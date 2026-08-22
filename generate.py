@@ -406,7 +406,6 @@ def render_home(content):
   <div class="container">
     <div class="content-narrow content-narrow-left mb-4">
       <p class="section-title-lg mb-2">最新评测</p>
-      <h2 class="text-h3" style="margin-top: 0;">哪款 AI 工具值得你用？</h2>
     </div>
   </div>
   <div class="wall-3d-viewport wall-3d-viewport-reviews">
@@ -425,7 +424,6 @@ def render_home(content):
   <div class="container">
     <div class="content-narrow content-narrow-left mb-4">
       <p class="section-title-lg mb-2">精选方案</p>
-      <h2 class="text-h3" style="margin-top: 0;">把工具变成工作流</h2>
     </div>
   </div>
   <div class="wall-3d-viewport wall-3d-viewport-guides">
