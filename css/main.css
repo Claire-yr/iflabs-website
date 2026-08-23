@@ -2719,42 +2719,55 @@ button.tab-link.active {
   transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ifer-character-img-idle {
-  opacity: 1;
+/* 3D 模型容器：覆盖整个 character 区域 */
+.ifer-character-model {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  --poster-color: transparent;
+  background: transparent;
+  transition: opacity 0.3s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* idle 状态：显示 3D 模型，隐 thinking 图 */
+.ifer-character-img-idle,
+.ifer-character-model-idle {
+  display: block;
 }
 
 .ifer-character-img-thinking {
+  display: none;
+}
+
+.ifer-character[data-state="thinking"] .ifer-character-model-idle {
   opacity: 0;
+}
+
+.ifer-character[data-state="thinking"] .ifer-character-img-thinking {
+  display: block;
+  opacity: 1;
+  animation: ifer-think-tilt 1.4s ease-in-out infinite;
 }
 
 .ifer-character[data-state="thinking"] .ifer-character-img-idle {
-  opacity: 0;
-}
-
-.ifer-character[data-state="thinking"] .ifer-character-img-thinking {
-  opacity: 1;
-}
-
-/* 浮动动画（仅 idle 状态） */
-.ifer-character[data-state="idle"] .ifer-character-img-idle {
-  animation: ifer-float 3.6s ease-in-out infinite;
-}
-
-@keyframes ifer-float {
-  0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
-  25% { transform: translateX(-50%) translateY(-4px) rotate(-1.2deg); }
-  50% { transform: translateX(-50%) translateY(-7px) rotate(0deg); }
-  75% { transform: translateX(-50%) translateY(-3px) rotate(1.2deg); }
-}
-
-/* 思考时的小晃动 */
-.ifer-character[data-state="thinking"] .ifer-character-img-thinking {
-  animation: ifer-think-tilt 1.4s ease-in-out infinite;
+  display: none;
 }
 
 @keyframes ifer-think-tilt {
   0%, 100% { transform: translateX(-50%) rotate(0deg); }
   50% { transform: translateX(-50%) rotate(-4deg); }
+}
+
+/* idle 时模型整体随浮动微微上下飘 */
+.ifer-character[data-state="idle"] .ifer-character-model-idle {
+  animation: ifer-model-bob 3.6s ease-in-out infinite;
+}
+
+@keyframes ifer-model-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 /* 阴影（让角色看起来"站着/趴着"在某个平面上） */

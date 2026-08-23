@@ -442,6 +442,36 @@
     const input = document.getElementById('ifer-chat-input');
     if (!character || !panel || !messagesEl || !form || !input) return;
 
+    // 3D 模型（model-viewer）状态控制
+    const model = character.querySelector('model-viewer');
+    if (model) {
+      // model-viewer 加载完成后，关闭默认交互（我们用按钮控制）
+      model.addEventListener('load', function () {
+        try {
+          model.autoRotate = true;
+          model.rotationPerSecond = '22deg';
+        } catch (e) { /* ignore */ }
+      });
+    }
+
+    function set3DState(s) {
+      if (!model) return;
+      try {
+        if (s === 'idle') {
+          model.autoRotate = true;
+          model.rotationPerSecond = '22deg';
+        } else if (s === 'thinking') {
+          // 停止旋转，相机移向侧面（歪头感）
+          model.autoRotate = false;
+          model.cameraOrbit = '60deg 75deg 105%';
+        } else if (s === 'on-chat') {
+          // 趴对话上：正面稍大，停止旋转
+          model.autoRotate = false;
+          model.cameraOrbit = '0deg 70deg 100%';
+        }
+      } catch (e) { /* ignore */ }
+    }
+
     const state = { open: false, greeted: false, busy: false };
 
     const QUICK = [
@@ -649,6 +679,7 @@
       panel.hidden = false;
       document.body.classList.add('ifer-chat-open');
       character.setAttribute('aria-expanded', 'true');
+      setCharacterState('on-chat');
       if (!state.greeted) {
         state.greeted = true;
         setTimeout(function () {
@@ -676,6 +707,7 @@
 
     function setCharacterState(s) {
       character.dataset.state = s;
+      set3DState(s);
     }
 
     function renderQuick() {

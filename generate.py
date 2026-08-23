@@ -78,7 +78,8 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/main.css?v=5">
+  <link rel="stylesheet" href="/css/main.css?v=8">
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body>
   <div class="page">
@@ -163,7 +164,20 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
       <span class="ifer-sparkle s2"></span>
       <span class="ifer-sparkle s3"></span>
     </span>
-    <img src="/assets/ifer/ifer-peek.png" alt="艾弗 Ifer" class="ifer-character-img ifer-character-img-idle">
+    <model-viewer
+      class="ifer-character-model ifer-character-model-idle"
+      src="/assets/ifer/ifer-3d.glb"
+      alt="艾弗 Ifer 3D 模型"
+      camera-controls="false"
+      auto-rotate="true"
+      rotation-per-second="22deg"
+      interaction-prompt="none"
+      shadow-intensity="0.6"
+      exposure="1.15"
+      environment-image="neutral"
+      loading="eager"
+      reveal="auto">
+    </model-viewer>
     <img src="/assets/ifer/ifer-thinking.png" alt="" class="ifer-character-img ifer-character-img-thinking">
     <span class="ifer-character-shadow" aria-hidden="true"></span>
   </div>
@@ -190,7 +204,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
     <div class="ifer-chat-footer">基于 I.F. Labs 知识库 · 结论前置 · —— 艾弗 Ifer</div>
   </div>
 
-  <script src="/js/main.js?v=7"></script>
+  <script src="/js/main.js?v=8"></script>
 </body>
 </html>'''
 
