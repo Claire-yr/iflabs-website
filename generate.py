@@ -44,7 +44,17 @@ def copy_assets():
     if src_js.exists():
         shutil.copytree(src_js, dst_js, dirs_exist_ok=True)
     if src_assets.exists():
-        shutil.copytree(src_assets, dst_assets, dirs_exist_ok=True)
+        # Exclude the large 3D model from the deploy bundle: Cloudflare Pages
+        # enforces a 25MB per-file limit, but the GLB is 47MB. It is served via
+        # the jsDelivr CDN (free, CORS-enabled, 50MB/file cap) instead.
+        shutil.copytree(
+            src_assets, dst_assets, dirs_exist_ok=True,
+            ignore=shutil.ignore_patterns("ifer-3d.glb"),
+        )
+        # Belt-and-suspenders: remove any stale copy left in the output dir.
+        _glb_dst = dst_assets / "ifer" / "ifer-3d.glb"
+        if _glb_dst.exists():
+            _glb_dst.unlink()
 
 
 def nav_link(label, href, active_href, english="", status=""):
@@ -166,7 +176,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
     </span>
     <model-viewer
       class="ifer-character-model ifer-character-model-idle"
-      src="/assets/ifer/ifer-3d.glb"
+      src="https://cdn.jsdelivr.net/gh/Claire-yr/iflabs-website@master/assets/ifer/ifer-3d.glb"
       alt="艾弗 Ifer 3D 模型"
       camera-controls="false"
       auto-rotate="true"
