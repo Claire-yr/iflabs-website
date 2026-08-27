@@ -176,7 +176,7 @@ def base_layout(site, navigation, title, description, body, active_href="/"):
     </span>
     <model-viewer
       class="ifer-character-model ifer-character-model-idle"
-      src="https://cdn.jsdelivr.net/gh/Claire-yr/iflabs-website@master/assets/ifer/ifer-3d.glb"
+      src="https://raw.githubusercontent.com/Claire-yr/iflabs-website/master/assets/ifer/ifer-3d.glb"
       alt="艾弗 Ifer 3D 模型"
       camera-controls="false"
       auto-rotate="true"
